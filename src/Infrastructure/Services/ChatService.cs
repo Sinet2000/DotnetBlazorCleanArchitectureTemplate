@@ -1,0 +1,88 @@
+﻿using AutoMapper;
+using FPAAgentura.Application.Exceptions;
+using FPAAgentura.Application.Interfaces.Chat;
+using FPAAgentura.Application.Interfaces.Services.Identity;
+using FPAAgentura.Application.Interfaces.Services;
+using FPAAgentura.Application.Models.Chat;
+using FPAAgentura.Application.Responses.Identity;
+using FPAAgentura.Shared.Constants.Role;
+using FPAAgentura.Shared.Wrapper;
+using Microsoft.Extensions.Localization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Infrastructure.Context;
+using Infrastructure.Models.Identity;
+using Microsoft.EntityFrameworkCore;
+
+namespace Infrastructure.Services;
+
+public class ChatService : IChatService
+{
+    private readonly AppDbContext _context;
+    private readonly IMapper _mapper;
+    private readonly IUserService _userService;
+    private readonly IStringLocalizer<ChatService> _localizer;
+
+    public ChatService(
+        AppDbContext context,
+        IMapper mapper,
+        IUserService userService,
+        IStringLocalizer<ChatService> localizer)
+    {
+        _context = context;
+        _mapper = mapper;
+        _userService = userService;
+        _localizer = localizer;
+    }
+
+    public async Task<Result<IEnumerable<ChatHistoryResponse>>> GetChatHistoryAsync(string userId, string contactId)
+    {
+        var response = await _userService.GetAsync(userId);
+        if (response.Succeeded)
+        {
+            var user = response.Data;
+            var query = await _context.ChatHistories
+                .Where(h => (h.FromUserId == userId && h.ToUserId == contactId) || (h.FromUserId == contactId && h.ToUserId == userId))
+                .OrderBy(a => a.CreatedDate)
+                .Include(a => a.FromUser)
+                .Include(a => a.ToUser)
+                .Select(x => new ChatHistoryResponse
+                {
+                    FromUserId = x.FromUserId,
+                    FromUserFullName = $"{x.FromUser.FirstName} {x.FromUser.LastName}",
+                    Message = x.Message,
+                    CreatedDate = x.CreatedDate,
+                    Id = x.Id,
+                    ToUserId = x.ToUserId,
+                    ToUserFullName = $"{x.ToUser.FirstName} {x.ToUser.LastName}",
+                    ToUserImageURL = x.ToUser.ProfilePictureDataUrl,
+                    FromUserImageURL = x.FromUser.ProfilePictureDataUrl
+                }).ToListAsync();
+            return await Result<IEnumerable<ChatHistoryResponse>>.SuccessAsync(query);
+        }
+        else
+        {
+            throw new ApiException(_localizer["User Not Found!"]);
+        }
+    }
+
+    public async Task<Result<IEnumerable<ChatUserResponse>>> GetChatUsersAsync(string userId)
+    {
+        var userRoles = await _userService.GetRolesAsync(userId);
+        var userIsAdmin = userRoles.Data?.UserRoles?.Any(x => x.Selected && x.RoleName == RoleConstants.AdministratorRole) == true;
+        var allUsers = await _context.Users.Where(user => user.Id != userId && (userIsAdmin || user.IsActive && user.EmailConfirmed)).ToListAsync();
+        var chatUsers = _mapper.Map<IEnumerable<ChatUserResponse>>(allUsers);
+        return await Result<IEnumerable<ChatUserResponse>>.SuccessAsync(chatUsers);
+    }
+
+    public async Task<IResult> SaveMessageAsync(ChatHistory<IChatUser> message)
+    {
+        message.ToUser = await _context.Users.Where(user => user.Id == message.ToUserId).FirstOrDefaultAsync();
+        await _context.ChatHistories.AddAsync(_mapper.Map<ChatHistory<ApplicationUser>>(message));
+        await _context.SaveChangesAsync();
+        return await Result.SuccessAsync();
+    }
+}

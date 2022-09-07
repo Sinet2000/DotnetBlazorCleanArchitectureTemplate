@@ -1,0 +1,11 @@
+﻿@import './_functions.scss';
+
+$theme-map-main: ( 
+    primaryColor: color(primaryMain), 
+    secondaryColor: color(secondaryMain), 
+    bgColor: color(bgMain),
+    btnPrimaryColor: color(btnPrimaryColorMain),
+    btnPrimaryBg: color(btnPrimaryBgMain),
+    btnSecondaryColor: color(btnSecondaryColorMain),
+    btnSecondaryBg: color(btnSecondaryBgMain),
+);

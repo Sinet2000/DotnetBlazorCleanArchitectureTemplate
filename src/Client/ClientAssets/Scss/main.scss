@@ -1,0 +1,31 @@
+﻿@import "_variables.scss";
+
+// Font Awesome icons
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "../../node_modules/@fortawesome/fontawesome-free/scss/regular.scss";
+
+// Bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;400;500;600;700;800&display=swap');
+
+// mixins
+@import "_mixins.scss";
+
+// pages
+
+//shared
+@import "./shared/_main-layout.scss";
+@import "./shared/_nav-menu.scss";
+@import "./shared/_top-header.scss";
+@import "./shared/_login-page.scss";
+
+// Components
+@import "./components/_index";
+
