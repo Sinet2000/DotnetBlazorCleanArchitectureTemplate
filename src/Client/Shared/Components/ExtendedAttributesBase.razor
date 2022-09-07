@@ -1,10 +1,9 @@
 ﻿@inject Microsoft.Extensions.Localization.IStringLocalizer<ExtendedAttributesLocalization> _localizer
 
-@using FPAAgentura.Domain.Enums
-
 @typeparam TId
 @typeparam TEntityId
 @typeparam TEntity
+@using PaperStop.Domain.Enums
 @typeparam TExtendedAttribute
 
 <HeroTitle Title="@string.Format(_localizer["Manage {0} Extended Attributes"], EntityName)" Description="@Description" />

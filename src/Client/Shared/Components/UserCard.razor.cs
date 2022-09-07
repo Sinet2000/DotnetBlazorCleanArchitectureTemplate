@@ -1,7 +1,7 @@
-﻿using Client.Extensions;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
+using PaperStop.Client.Extensions;
 
-namespace Client.Shared.Components
+namespace PaperStop.Client.Shared.Components
 {
     public partial class UserCard
     {
@@ -24,14 +24,14 @@ namespace Client.Shared.Components
             var state = await _stateProvider.GetAuthenticationStateAsync();
             var user = state.User;
 
-            this.Email = user.GetEmail().Replace(".com", string.Empty);
-            this.FirstName = user.GetFirstName();
-            this.SecondName = user.GetLastName();
+            this.Email = ClaimsPrincipalExtensions.GetEmail(user).Replace(".com", string.Empty);
+            this.FirstName = ClaimsPrincipalExtensions.GetFirstName(user);
+            this.SecondName = ClaimsPrincipalExtensions.GetLastName(user);
             if (this.FirstName.Length > 0)
             {
                 FirstLetterOfName = FirstName[0];
             }
-            var UserId = user.GetUserId();
+            var UserId = ClaimsPrincipalExtensions.GetUserId(user);
             var imageResponse = await _accountManager.GetProfilePictureAsync(UserId);
             if (imageResponse.Succeeded)
             {

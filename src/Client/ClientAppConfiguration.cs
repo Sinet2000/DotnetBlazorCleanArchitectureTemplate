@@ -1,4 +1,4 @@
-﻿namespace Client;
+﻿namespace PaperStop.Client;
 
 public class ClientAppConfiguration
 {

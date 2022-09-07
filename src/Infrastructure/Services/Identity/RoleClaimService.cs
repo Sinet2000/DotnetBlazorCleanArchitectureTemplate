@@ -1,20 +1,15 @@
 ﻿using AutoMapper;
-using FPAAgentura.Application.Requests.Identity;
-using FPAAgentura.Application.Responses.Identity;
-using FPAAgentura.Shared.Wrapper;
-using Microsoft.Extensions.Localization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Services;
-using FPAAgentura.Application.Interfaces.Services.Identity;
-using Infrastructure.Context;
-using Infrastructure.Models.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
+using PaperStop.Application.Interfaces.Services;
+using PaperStop.Application.Interfaces.Services.Identity;
+using PaperStop.Application.Requests.Identity;
+using PaperStop.Application.Responses.Identity;
+using PaperStop.Infrastructure.Context;
+using PaperStop.Infrastructure.Models.Identity;
+using PaperStop.Shared.Wrapper;
 
-namespace Infrastructure.Services.Identity;
+namespace PaperStop.Infrastructure.Services.Identity;
 
 public class RoleClaimService : IRoleClaimService
     {

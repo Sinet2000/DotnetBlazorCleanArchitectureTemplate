@@ -4,6 +4,8 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>disable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<AssemblyName>PaperStop.Server</AssemblyName>
+		<RootNamespace>PaperStop.Server</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

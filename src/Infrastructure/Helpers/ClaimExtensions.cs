@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Responses.Identity;
-using FPAAgentura.Shared.Constants.Permission;
-using Infrastructure.Models.Identity;
 using Microsoft.AspNetCore.Identity;
+using PaperStop.Application.Responses.Identity;
+using PaperStop.Infrastructure.Models.Identity;
+using PaperStop.Shared.Constants.Permission;
 
-namespace Infrastructure.Helpers;
+namespace PaperStop.Infrastructure.Helpers;
 
 public static class ClaimsHelper
 {

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Enums;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Newtonsoft.Json;
+using PaperStop.Application.Enums;
 
-namespace Infrastructure.Models.Audit;
+namespace PaperStop.Infrastructure.Models.Audit;
 
 public class AuditEntry
 {

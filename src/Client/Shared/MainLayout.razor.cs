@@ -1,15 +1,14 @@
 ﻿using System.Net.Http.Headers;
-using Client.Extensions;
-using Client.Infrastructure.Managers.Identity.Roles;
-using Client.Infrastructure.Settings;
-using FPAAgentura.Shared.Constants.Application;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
 using MudBlazor;
-using static MudBlazor.CategoryTypes;
+using PaperStop.Client.Extensions;
+using PaperStop.Client.Infrastructure.Managers.Identity.Roles;
+using PaperStop.Client.Infrastructure.Settings;
+using PaperStop.Shared.Constants.Application;
 
-namespace Client.Shared;
+namespace PaperStop.Client.Shared;
 
 public partial class MainLayout : IDisposable
     {

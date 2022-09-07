@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace Client.Models;
+﻿namespace PaperStop.Client.Models;
 
 public class ChatUser
 {

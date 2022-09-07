@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Shared.Settings;
-using FPAAgentura.Shared.Wrapper;
+﻿using PaperStop.Shared.Settings;
+using PaperStop.Shared.Wrapper;
 
-namespace FPAAgentura.Shared.Managers;
+namespace PaperStop.Shared.Managers;
 
 public interface IPreferenceManager
 {

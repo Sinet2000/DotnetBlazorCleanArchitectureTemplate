@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Serialization.Serializers;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using PaperStop.Application.Interfaces.Serialization.Serializers;
 
-namespace Infrastructure.Extensions;
+namespace PaperStop.Infrastructure.Extensions;
 
 public static class ValueConversionExtensions
 {

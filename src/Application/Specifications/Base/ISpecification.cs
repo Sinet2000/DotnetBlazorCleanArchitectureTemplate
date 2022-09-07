@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Domain.Contracts;
+﻿using System.Linq.Expressions;
+using PaperStop.Domain.Contracts;
 
-namespace FPAAgentura.Application.Specifications.Base;
+namespace PaperStop.Application.Specifications.Base;
 
 public interface ISpecification<T> where T : class, IEntity
 {

@@ -1,20 +1,15 @@
-﻿using AutoMapper;
-using FPAAgentura.Application.Interfaces.Repositories;
-using FPAAgentura.Domain.Contracts;
-using FPAAgentura.Domain.Enums;
-using FPAAgentura.Shared.Constants.Application;
-using FPAAgentura.Shared.Wrapper;
+﻿using System.ComponentModel.DataAnnotations;
+using AutoMapper;
 using MediatR;
-using Microsoft.Extensions.Localization;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
+using PaperStop.Application.Interfaces.Repositories;
+using PaperStop.Domain.Contracts;
+using PaperStop.Domain.Enums;
+using PaperStop.Shared.Constants.Application;
+using PaperStop.Shared.Wrapper;
 
-namespace FPAAgentura.Application.Features.ExtendedAttributes.Commands.AddEdit;
+namespace PaperStop.Application.Features.ExtendedAttributes.Commands.AddEdit;
 
 internal class AddEditExtendedAttributeCommandLocalization
     {

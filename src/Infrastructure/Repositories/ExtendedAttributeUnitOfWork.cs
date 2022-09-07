@@ -1,16 +1,11 @@
-﻿using FPAAgentura.Application.Interfaces.Repositories;
-using FPAAgentura.Application.Interfaces.Services;
-using FPAAgentura.Domain.Contracts;
+﻿using System.Collections;
 using LazyCache;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Infrastructure.Context;
+using PaperStop.Application.Interfaces.Repositories;
+using PaperStop.Application.Interfaces.Services;
+using PaperStop.Domain.Contracts;
+using PaperStop.Infrastructure.Context;
 
-namespace Infrastructure.Repositories;
+namespace PaperStop.Infrastructure.Repositories;
 
 public class ExtendedAttributeUnitOfWork<TId, TEntityId, TEntity> : IExtendedAttributeUnitOfWork<TId, TEntityId, TEntity> where TEntity : AuditableEntity<TEntityId>
     {

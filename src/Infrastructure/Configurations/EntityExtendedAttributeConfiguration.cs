@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Serialization.Options;
-using FPAAgentura.Application.Serialization.Serializers;
-using FPAAgentura.Domain.Contracts;
-using Infrastructure.Extensions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Options;
+using PaperStop.Application.Serialization.Options;
+using PaperStop.Application.Serialization.Serializers;
+using PaperStop.Domain.Contracts;
+using PaperStop.Infrastructure.Extensions;
 
-namespace Infrastructure.Configurations;
+namespace PaperStop.Infrastructure.Configurations;
 
 public class EntityExtendedAttributeConfiguration : IEntityTypeConfiguration<IEntityExtendedAttribute>
 {

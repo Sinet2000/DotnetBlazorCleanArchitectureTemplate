@@ -1,16 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Services;
-using FPAAgentura.Application.Models.Chat;
-using Infrastructure.Models.Identity;
-using FPAAgentura.Domain.Contracts;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using PaperStop.Application.Interfaces.Services;
+using PaperStop.Application.Models.Chat;
+using PaperStop.Domain.Contracts;
+using PaperStop.Infrastructure.Models.Identity;
 
-namespace Infrastructure.Context
+namespace PaperStop.Infrastructure.Context
 {
     public class AppDbContext : AuditableContext
     {

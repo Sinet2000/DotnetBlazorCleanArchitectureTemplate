@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
-using FPAAgentura.Application.Exceptions;
-using FPAAgentura.Shared.Wrapper;
+using PaperStop.Application.Exceptions;
+using PaperStop.Shared.Wrapper;
 
 namespace Server.Middlewares;
 

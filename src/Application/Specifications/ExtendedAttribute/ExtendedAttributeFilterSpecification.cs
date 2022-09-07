@@ -1,13 +1,8 @@
-﻿using FPAAgentura.Application.Features.ExtendedAttributes.Queries.Export;
-using FPAAgentura.Domain.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Specifications.Base;
+﻿using PaperStop.Application.Features.ExtendedAttributes.Queries.Export;
+using PaperStop.Application.Specifications.Base;
+using PaperStop.Domain.Contracts;
 
-namespace FPAAgentura.Application.Specifications.ExtendedAttribute;
+namespace PaperStop.Application.Specifications.ExtendedAttribute;
 
 public class ExtendedAttributeFilterSpecification<TId, TEntityId, TEntity, TExtendedAttribute>
         : ApplicationSpecification<TExtendedAttribute>

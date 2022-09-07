@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Responses.Audit;
-using FPAAgentura.Shared.Wrapper;
+﻿using PaperStop.Application.Responses.Audit;
+using PaperStop.Shared.Wrapper;
 
-namespace Client.Infrastructure.Managers.Audit;
+namespace PaperStop.Client.Infrastructure.Managers.Audit;
 
 public interface IAuditManager : IManager
 {

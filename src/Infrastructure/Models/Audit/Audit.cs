@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Domain.Contracts;
+﻿using PaperStop.Domain.Contracts;
 
-namespace Infrastructure.Models.Audit;
+namespace PaperStop.Infrastructure.Models.Audit;
 
 public class Audit : IEntity<int>
 {

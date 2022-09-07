@@ -1,21 +1,16 @@
-﻿using FPAAgentura.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using FPAAgentura.Application.Features.ExtendedAttributes.Commands.Delete;
-using FPAAgentura.Application.Features.ExtendedAttributes.Queries.Export;
-using FPAAgentura.Application.Features.ExtendedAttributes.Queries.GetAll;
-using FPAAgentura.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
-using FPAAgentura.Application.Features.ExtendedAttributes.Queries.GetById;
-using FPAAgentura.Domain.Contracts;
-using FPAAgentura.Shared.Wrapper;
+﻿using System.Reflection;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using PaperStop.Application.Features.ExtendedAttributes.Commands.AddEdit;
+using PaperStop.Application.Features.ExtendedAttributes.Commands.Delete;
+using PaperStop.Application.Features.ExtendedAttributes.Queries.Export;
+using PaperStop.Application.Features.ExtendedAttributes.Queries.GetAll;
+using PaperStop.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
+using PaperStop.Application.Features.ExtendedAttributes.Queries.GetById;
+using PaperStop.Domain.Contracts;
+using PaperStop.Shared.Wrapper;
 
-namespace FPAAgentura.Application.Extensions;
+namespace PaperStop.Application.Extensions;
 
 public static class ServiceCollectionExtensions
     {

@@ -1,17 +1,12 @@
-﻿using FPAAgentura.Application.Interfaces.Repositories;
-using FPAAgentura.Domain.Contracts;
-using FPAAgentura.Shared.Constants.Application;
-using FPAAgentura.Shared.Wrapper;
-using MediatR;
-using Microsoft.Extensions.Localization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
+using PaperStop.Application.Interfaces.Repositories;
+using PaperStop.Domain.Contracts;
+using PaperStop.Shared.Constants.Application;
+using PaperStop.Shared.Wrapper;
 
-namespace FPAAgentura.Application.Features.ExtendedAttributes.Commands.Delete;
+namespace PaperStop.Application.Features.ExtendedAttributes.Commands.Delete;
 
 internal class DeleteExtendedAttributeCommandLocalization
     {

@@ -1,5 +1,5 @@
-﻿using FPAAgentura.Shared.Constants.Localization;
-using FPAAgentura.Shared.Settings;
+﻿using PaperStop.Shared.Constants.Localization;
+using PaperStop.Shared.Settings;
 
 namespace Server.Settings;
 

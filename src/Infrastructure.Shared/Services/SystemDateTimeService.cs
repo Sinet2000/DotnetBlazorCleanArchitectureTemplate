@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Services;
+﻿using PaperStop.Application.Interfaces.Services;
 
-namespace Infrastructure.Shared.Services;
+namespace PaperStop.Shared.Infrastructure.Services;
 
 public class SystemDateTimeService : IDateTimeService
 {

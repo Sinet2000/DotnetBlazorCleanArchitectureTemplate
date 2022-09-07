@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FPAAgentura.Application.Enums;
+﻿namespace PaperStop.Application.Enums;
 
 public enum AuditType : byte
 {

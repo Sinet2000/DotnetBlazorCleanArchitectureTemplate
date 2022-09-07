@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Responses.Identity;
+﻿using PaperStop.Application.Responses.Identity;
 
-namespace FPAAgentura.Application.Requests.Identity;
+namespace PaperStop.Application.Requests.Identity;
 
 public class UpdateUserRolesRequest
 {

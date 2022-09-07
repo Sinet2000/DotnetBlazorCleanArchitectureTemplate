@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Responses.Audit;
-using FPAAgentura.Shared.Wrapper;
+﻿using PaperStop.Application.Responses.Audit;
+using PaperStop.Shared.Wrapper;
 
-namespace FPAAgentura.Application.Interfaces.Services;
+namespace PaperStop.Application.Interfaces.Services;
 
 public interface IAuditService
 {

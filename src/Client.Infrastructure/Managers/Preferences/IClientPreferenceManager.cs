@@ -1,9 +1,8 @@
-﻿using FPAAgentura.Shared.Managers;
+﻿using PaperStop.Shared.Managers;
 
-namespace Client.Infrastructure.Managers.Preferences
+namespace PaperStop.Client.Infrastructure.Managers.Preferences;
+
+public interface IClientPreferenceManager : IPreferenceManager
 {
-    public interface IClientPreferenceManager : IPreferenceManager
-    {
-        Task<bool> ToggleDarkModeAsync();
-    }
+    Task<bool> ToggleDarkModeAsync();
 }

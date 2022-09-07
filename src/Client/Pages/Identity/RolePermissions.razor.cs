@@ -1,18 +1,18 @@
 ﻿using System.Security.Claims;
 using AutoMapper;
-using Client.Extensions;
-using Client.Infrastructure.Managers.Identity.Roles;
-using Client.Infrastructure.Mappings;
-using FPAAgentura.Application.Requests.Identity;
-using FPAAgentura.Application.Responses.Identity;
-using FPAAgentura.Shared.Constants.Application;
-using FPAAgentura.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using MudBlazor;
+using PaperStop.Application.Requests.Identity;
+using PaperStop.Application.Responses.Identity;
+using PaperStop.Client.Extensions;
+using PaperStop.Client.Infrastructure.Managers.Identity.Roles;
+using PaperStop.Client.Infrastructure.Mappings;
+using PaperStop.Shared.Constants.Application;
+using PaperStop.Shared.Constants.Permission;
 
-namespace Client.Pages.Identity
+namespace PaperStop.Client.Pages.Identity
 {
     public partial class RolePermissions
     {

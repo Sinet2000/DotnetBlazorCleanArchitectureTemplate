@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Serialization.Serializers;
-using FPAAgentura.Application.Serialization.Options;
+﻿using System.Text.Json;
 using Microsoft.Extensions.Options;
+using PaperStop.Application.Interfaces.Serialization.Serializers;
+using PaperStop.Application.Serialization.Options;
 
-namespace FPAAgentura.Application.Serialization.Serializers;
+namespace PaperStop.Application.Serialization.Serializers;
 
 public class SystemTextJsonSerializer : IJsonSerializer
 {

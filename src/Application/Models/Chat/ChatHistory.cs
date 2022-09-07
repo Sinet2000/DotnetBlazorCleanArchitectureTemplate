@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Chat;
+﻿using PaperStop.Application.Interfaces.Chat;
 
-namespace FPAAgentura.Application.Models.Chat;
+namespace PaperStop.Application.Models.Chat;
 
 public partial class ChatHistory<TUser> : IChatHistory<TUser> where TUser : IChatUser
 {

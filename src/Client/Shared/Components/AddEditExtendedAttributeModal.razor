@@ -1,9 +1,9 @@
-﻿@using FPAAgentura.Domain.Enums
-@inject Microsoft.Extensions.Localization.IStringLocalizer<AddEditExtendedAttributeModalLocalization> _localizer
+﻿@inject Microsoft.Extensions.Localization.IStringLocalizer<AddEditExtendedAttributeModalLocalization> _localizer
 
 @typeparam TId
 @typeparam TEntityId
 @typeparam TEntity
+@using PaperStop.Domain.Enums
 @typeparam TExtendedAttribute
 
 <EditForm Model="@AddEditExtendedAttributeModel" OnValidSubmit="SaveAsync">

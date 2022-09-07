@@ -1,15 +1,15 @@
 ﻿using Blazored.FluentValidation;
-using Client.Extensions;
-using Client.Infrastructure.Managers.ExtendedAttribute;
-using FPAAgentura.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using FPAAgentura.Domain.Contracts;
-using FPAAgentura.Domain.Enums;
-using FPAAgentura.Shared.Constants.Application;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using MudBlazor;
+using PaperStop.Application.Features.ExtendedAttributes.Commands.AddEdit;
+using PaperStop.Client.Extensions;
+using PaperStop.Client.Infrastructure.Managers.ExtendedAttribute;
+using PaperStop.Domain.Contracts;
+using PaperStop.Domain.Enums;
+using PaperStop.Shared.Constants.Application;
 
-namespace Client.Shared.Components
+namespace PaperStop.Client.Shared.Components
 {
     public class AddEditExtendedAttributeModalLocalization
     {

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using FPAAgentura.Application.Interfaces.Repositories;
-using FPAAgentura.Domain.Contracts;
-using FPAAgentura.Shared.Wrapper;
+﻿using AutoMapper;
 using MediatR;
+using PaperStop.Application.Interfaces.Repositories;
+using PaperStop.Domain.Contracts;
+using PaperStop.Shared.Wrapper;
 
-namespace FPAAgentura.Application.Features.ExtendedAttributes.Queries.GetById;
+namespace PaperStop.Application.Features.ExtendedAttributes.Queries.GetById;
 
 public class GetExtendedAttributeByIdQuery<TId, TEntityId, TEntity, TExtendedAttribute>
     : IRequest<Result<GetExtendedAttributeByIdResponse<TId, TEntityId>>>

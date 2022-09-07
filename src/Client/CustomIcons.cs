@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Client;
+namespace PaperStop.Client;
 
 [ExcludeFromCodeCoverage]
 public class CustomIcons

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Common;
+﻿using PaperStop.Application.Interfaces.Common;
 
-namespace FPAAgentura.Application.Interfaces.Services;
+namespace PaperStop.Application.Interfaces.Services;
 
 public interface ICurrentUserService : IService
 {

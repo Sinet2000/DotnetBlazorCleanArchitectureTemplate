@@ -1,23 +1,19 @@
-﻿using FPAAgentura.Application.Configurations;
-using FPAAgentura.Application.Requests.Identity;
-using FPAAgentura.Application.Responses.Identity;
-using FPAAgentura.Shared.Wrapper;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Services.Identity;
-using Infrastructure.Models.Identity;
+using PaperStop.Application.Configurations;
+using PaperStop.Application.Interfaces.Services.Identity;
+using PaperStop.Application.Requests.Identity;
+using PaperStop.Application.Responses.Identity;
+using PaperStop.Infrastructure.Models.Identity;
+using PaperStop.Shared.Wrapper;
 
-namespace Infrastructure.Services.Identity;
+namespace PaperStop.Infrastructure.Services.Identity;
 
 public class IdentityService : ITokenService
     {

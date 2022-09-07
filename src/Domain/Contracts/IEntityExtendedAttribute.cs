@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Domain.Enums;
+﻿using PaperStop.Domain.Enums;
 
-namespace FPAAgentura.Domain.Contracts;
+namespace PaperStop.Domain.Contracts;
 
 public interface IEntityExtendedAttribute<TId, TEntityId, TEntity>
     : IEntityExtendedAttribute<TEntityId, TEntity>, IEntity<TId>

@@ -1,9 +1,8 @@
-﻿namespace Client.Infrastructure.Routes
-{
-    public static class PreferencesEndpoints
-    {
-        public static string ChangeLanguage = "changeLanguage";
+﻿namespace PaperStop.Client.Infrastructure.Routes;
 
-        //TODO - add endpoints
-    }
+public static class PreferencesEndpoints
+{
+    public static string ChangeLanguage = "changeLanguage";
+
+    //TODO - add endpoints
 }

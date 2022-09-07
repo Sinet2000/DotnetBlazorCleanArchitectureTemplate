@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
-using FPAAgentura.Application.Configurations;
-using FPAAgentura.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using FPAAgentura.Application.Validators.Features.ExtendedAttributes.Commands.AddEdit;
+using PaperStop.Application.Configurations;
+using PaperStop.Application.Features.ExtendedAttributes.Commands.AddEdit;
+using PaperStop.Application.Validators.Features.ExtendedAttributes.Commands.AddEdit;
 
 namespace Server.Extensions;
 

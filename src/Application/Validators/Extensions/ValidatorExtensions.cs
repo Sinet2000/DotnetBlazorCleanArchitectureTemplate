@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.Validators;
 
-namespace FPAAgentura.Application.Validators.Extensions;
+namespace PaperStop.Application.Validators.Extensions;
 
 public static class ValidatorExtensions
 {

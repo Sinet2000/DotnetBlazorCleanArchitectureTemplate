@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
-namespace FPAAgentura.Application.Serialization.JsonConverters;
+namespace PaperStop.Application.Serialization.JsonConverters;
 
 public class TimespanJsonConverter : JsonConverter<TimeSpan>
 {

@@ -1,16 +1,15 @@
-﻿using FPAAgentura.Application.Interfaces.Chat;
-using FPAAgentura.Application.Models.Chat;
-using FPAAgentura.Application.Responses.Identity;
-using FPAAgentura.Shared.Wrapper;
+﻿using PaperStop.Application.Interfaces.Chat;
+using PaperStop.Application.Models.Chat;
+using PaperStop.Application.Responses.Identity;
+using PaperStop.Shared.Wrapper;
 
-namespace Client.Infrastructure.Managers.Communication
+namespace PaperStop.Client.Infrastructure.Managers.Communication;
+
+public interface IChatManager : IManager
 {
-    public interface IChatManager : IManager
-    {
-        Task<IResult<IEnumerable<ChatUserResponse>>> GetChatUsersAsync();
+    Task<IResult<IEnumerable<ChatUserResponse>>> GetChatUsersAsync();
 
-        Task<IResult> SaveMessageAsync(ChatHistory<IChatUser> chatHistory);
+    Task<IResult> SaveMessageAsync(ChatHistory<IChatUser> chatHistory);
 
-        Task<IResult<IEnumerable<ChatHistoryResponse>>> GetChatHistoryAsync(string cId);
-    }
+    Task<IResult<IEnumerable<ChatHistoryResponse>>> GetChatHistoryAsync(string cId);
 }

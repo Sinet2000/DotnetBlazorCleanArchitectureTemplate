@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Domain.Contracts;
+﻿using PaperStop.Domain.Contracts;
 
-namespace FPAAgentura.Application.Interfaces.Repositories;
+namespace PaperStop.Application.Interfaces.Repositories;
 
 public interface IExtendedAttributeUnitOfWork<TId, TEntityId, TEntity> : IDisposable where TEntity : AuditableEntity<TEntityId>
 {

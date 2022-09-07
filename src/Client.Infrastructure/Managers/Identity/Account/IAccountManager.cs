@@ -1,16 +1,15 @@
-﻿using FPAAgentura.Application.Requests.Identity;
-using FPAAgentura.Shared.Wrapper;
+﻿using PaperStop.Application.Requests.Identity;
+using PaperStop.Shared.Wrapper;
 
-namespace Client.Infrastructure.Managers.Identity.Account
+namespace PaperStop.Client.Infrastructure.Managers.Identity.Account;
+
+public interface IAccountManager : IManager
 {
-    public interface IAccountManager : IManager
-    {
-        Task<IResult> ChangePasswordAsync(ChangePasswordRequest model);
+    Task<IResult> ChangePasswordAsync(ChangePasswordRequest model);
 
-        Task<IResult> UpdateProfileAsync(UpdateProfileRequest model);
+    Task<IResult> UpdateProfileAsync(UpdateProfileRequest model);
 
-        Task<IResult<string>> GetProfilePictureAsync(string userId);
+    Task<IResult<string>> GetProfilePictureAsync(string userId);
 
-        Task<IResult<string>> UpdateProfilePictureAsync(UpdateProfilePictureRequest request, string userId);
-    }
+    Task<IResult<string>> UpdateProfilePictureAsync(UpdateProfilePictureRequest request, string userId);
 }

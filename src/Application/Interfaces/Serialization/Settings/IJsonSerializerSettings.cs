@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace FPAAgentura.Application.Interfaces.Serialization.Settings;
+namespace PaperStop.Application.Interfaces.Serialization.Settings;
 
 public interface IJsonSerializerSettings
 {

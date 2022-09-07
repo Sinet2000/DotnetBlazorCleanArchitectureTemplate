@@ -1,14 +1,9 @@
-﻿using FPAAgentura.Application.Interfaces.Services.Storage.Provider;
-using FPAAgentura.Application.Interfaces.Services.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Serialization.Serializers;
+﻿using System.Text.Json;
+using PaperStop.Application.Interfaces.Serialization.Serializers;
+using PaperStop.Application.Interfaces.Services.Storage;
+using PaperStop.Application.Interfaces.Services.Storage.Provider;
 
-namespace Infrastructure.Services.Storage;
+namespace PaperStop.Infrastructure.Services.Storage;
 
 public class ServerStorageService : IServerStorageService, ISyncServerStorageService
     {

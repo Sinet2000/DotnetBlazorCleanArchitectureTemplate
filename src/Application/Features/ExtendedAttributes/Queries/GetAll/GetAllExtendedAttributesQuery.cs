@@ -1,17 +1,12 @@
 ﻿using AutoMapper;
-using FPAAgentura.Application.Interfaces.Repositories;
-using FPAAgentura.Domain.Contracts;
-using FPAAgentura.Shared.Constants.Application;
-using FPAAgentura.Shared.Wrapper;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LazyCache;
+using MediatR;
+using PaperStop.Application.Interfaces.Repositories;
+using PaperStop.Domain.Contracts;
+using PaperStop.Shared.Constants.Application;
+using PaperStop.Shared.Wrapper;
 
-namespace FPAAgentura.Application.Features.ExtendedAttributes.Queries.GetAll;
+namespace PaperStop.Application.Features.ExtendedAttributes.Queries.GetAll;
 
 public class GetAllExtendedAttributesQuery<TId, TEntityId, TEntity, TExtendedAttribute>
         : IRequest<Result<List<GetAllExtendedAttributesResponse<TId, TEntityId>>>>

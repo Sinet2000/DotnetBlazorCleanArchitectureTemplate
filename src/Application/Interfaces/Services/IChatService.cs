@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Chat;
-using FPAAgentura.Application.Models.Chat;
-using FPAAgentura.Application.Responses.Identity;
-using FPAAgentura.Shared.Wrapper;
+﻿using PaperStop.Application.Interfaces.Chat;
+using PaperStop.Application.Models.Chat;
+using PaperStop.Application.Responses.Identity;
+using PaperStop.Shared.Wrapper;
 
-namespace FPAAgentura.Application.Interfaces.Services;
+namespace PaperStop.Application.Interfaces.Services;
 
 public interface IChatService
 {

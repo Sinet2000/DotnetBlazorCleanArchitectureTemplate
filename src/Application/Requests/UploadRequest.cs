@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Enums;
+﻿using PaperStop.Application.Enums;
 
-namespace FPAAgentura.Application.Requests;
+namespace PaperStop.Application.Requests;
 
 public class UploadRequest
 {

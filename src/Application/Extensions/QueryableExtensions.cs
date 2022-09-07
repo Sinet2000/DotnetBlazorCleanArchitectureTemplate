@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Exceptions;
-using FPAAgentura.Application.Specifications.Base;
-using FPAAgentura.Domain.Contracts;
-using FPAAgentura.Shared.Wrapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using PaperStop.Application.Exceptions;
+using PaperStop.Application.Specifications.Base;
+using PaperStop.Domain.Contracts;
+using PaperStop.Shared.Wrapper;
 
-namespace FPAAgentura.Application.Extensions;
+namespace PaperStop.Application.Extensions;
 
 public static class QueryableExtensions
 {

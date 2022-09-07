@@ -1,8 +1,8 @@
-﻿using FPAAgentura.Shared.Constants.Application;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
+using PaperStop.Shared.Constants.Application;
 
-namespace Client.Extensions;
+namespace PaperStop.Client.Extensions;
 
 public static class HubExtensions
 {

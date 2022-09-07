@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Common;
-using FPAAgentura.Application.Requests.Identity;
-using FPAAgentura.Shared.Wrapper;
+﻿using PaperStop.Application.Interfaces.Common;
+using PaperStop.Application.Requests.Identity;
+using PaperStop.Shared.Wrapper;
 
-namespace FPAAgentura.Application.Interfaces.Services.Account;
+namespace PaperStop.Application.Interfaces.Services.Account;
 
 public interface IAccountService : IService
 {

@@ -1,5 +1,6 @@
 ﻿@page "/audit-trails"
 @using System.Globalization
+@using PaperStop.Shared.Constants.Permission
 @attribute [Authorize(Policy = Permissions.AuditTrails.View)]
 @inject Microsoft.Extensions.Localization.IStringLocalizer<AuditTrails> _localizer
 

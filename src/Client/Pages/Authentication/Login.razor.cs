@@ -1,12 +1,10 @@
-﻿using FPAAgentura.Application.Requests.Identity;
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components;
-using System.Runtime.CompilerServices;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using Blazored.FluentValidation;
+using Microsoft.AspNetCore.Components.Authorization;
 using MudBlazor;
+using PaperStop.Application.Requests.Identity;
 
-namespace Client.Pages.Authentication;
+namespace PaperStop.Client.Pages.Authentication;
 
 public partial class Login
 {

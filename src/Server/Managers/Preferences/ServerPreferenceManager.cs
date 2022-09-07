@@ -1,10 +1,10 @@
-﻿using FPAAgentura.Application.Interfaces.Services.Storage;
-using FPAAgentura.Shared.Constants.Storage;
-using FPAAgentura.Shared.Settings;
-using FPAAgentura.Shared.Wrapper;
-using Microsoft.Extensions.Localization;
+﻿using Microsoft.Extensions.Localization;
+using PaperStop.Application.Interfaces.Services.Storage;
+using PaperStop.Shared.Constants.Storage;
+using PaperStop.Shared.Settings;
+using PaperStop.Shared.Wrapper;
 using Server.Settings;
-using IResult = FPAAgentura.Shared.Wrapper.IResult;
+using IResult = PaperStop.Shared.Wrapper.IResult;
 
 namespace Server.Managers.Preferences;
 

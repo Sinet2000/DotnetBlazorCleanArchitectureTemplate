@@ -1,16 +1,11 @@
-﻿using FPAAgentura.Application.Interfaces.Repositories;
-using FPAAgentura.Domain.Contracts;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Services;
-using Infrastructure.Context;
+﻿using System.Collections;
 using LazyCache;
+using PaperStop.Application.Interfaces.Repositories;
+using PaperStop.Application.Interfaces.Services;
+using PaperStop.Domain.Contracts;
+using PaperStop.Infrastructure.Context;
 
-namespace Infrastructure.Repositories;
+namespace PaperStop.Infrastructure.Repositories;
 
 public class UnitOfWork<TId> : IUnitOfWork<TId>
     {

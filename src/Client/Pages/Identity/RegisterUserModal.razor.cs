@@ -1,9 +1,9 @@
 ﻿using Blazored.FluentValidation;
-using FPAAgentura.Application.Requests.Identity;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
+using PaperStop.Application.Requests.Identity;
 
-namespace Client.Pages.Identity
+namespace PaperStop.Client.Pages.Identity
 {
     public partial class RegisterUserModal
     {

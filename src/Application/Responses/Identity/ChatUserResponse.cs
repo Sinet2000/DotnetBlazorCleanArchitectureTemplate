@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Chat;
-using FPAAgentura.Application.Models.Chat;
+﻿using PaperStop.Application.Interfaces.Chat;
+using PaperStop.Application.Models.Chat;
 
-namespace FPAAgentura.Application.Responses.Identity;
+namespace PaperStop.Application.Responses.Identity;
 
 public class ChatUserResponse
 {

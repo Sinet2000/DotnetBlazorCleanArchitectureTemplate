@@ -1,6 +1,6 @@
 ﻿using MudBlazor;
 
-namespace Client.Infrastructure.Settings;
+namespace PaperStop.Client.Infrastructure.Settings;
 
 public class ClientAppTheme
     {

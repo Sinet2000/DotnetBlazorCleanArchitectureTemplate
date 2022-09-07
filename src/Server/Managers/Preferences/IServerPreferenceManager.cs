@@ -1,4 +1,4 @@
-﻿using FPAAgentura.Shared.Managers;
+﻿using PaperStop.Shared.Managers;
 
 namespace Server.Managers.Preferences;
 

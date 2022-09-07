@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Interfaces.Repositories;
-using FPAAgentura.Domain.Contracts;
-using Infrastructure.Context;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using PaperStop.Application.Interfaces.Repositories;
+using PaperStop.Domain.Contracts;
+using PaperStop.Infrastructure.Context;
 
-namespace Infrastructure.Repositories;
+namespace PaperStop.Infrastructure.Repositories;
 
 public class RepositoryAsync<T, TId> : IRepositoryAsync<T, TId> where T : AuditableEntity<TId>
 {

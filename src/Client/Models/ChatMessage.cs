@@ -1,4 +1,4 @@
-﻿namespace Client.Models;
+﻿namespace PaperStop.Client.Models;
 
 public class ChatMessage
 {

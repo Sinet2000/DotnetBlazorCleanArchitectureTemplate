@@ -1,20 +1,15 @@
-﻿using FPAAgentura.Application.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Infrastructure.Context;
-using Infrastructure.Models.Identity;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-using FPAAgentura.Shared.Constants.Permission;
-using FPAAgentura.Shared.Constants.Role;
-using FPAAgentura.Shared.Constants.User;
-using Infrastructure.Helpers;
+using PaperStop.Application.Interfaces.Services;
+using PaperStop.Infrastructure.Context;
+using PaperStop.Infrastructure.Helpers;
+using PaperStop.Infrastructure.Models.Identity;
+using PaperStop.Shared.Constants.Permission;
+using PaperStop.Shared.Constants.Role;
+using PaperStop.Shared.Constants.User;
 
-namespace Infrastructure
+namespace PaperStop.Infrastructure
 {
     public class DatabaseSeeder : IDatabaseSeeder
     {

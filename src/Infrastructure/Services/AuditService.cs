@@ -1,21 +1,16 @@
-﻿using AutoMapper;
-using FPAAgentura.Application.Interfaces.Services;
-using FPAAgentura.Application.Responses.Audit;
-using FPAAgentura.Shared.Wrapper;
-using Infrastructure.Models.Audit;
-using Infrastructure.Specifications;
-using Microsoft.Extensions.Localization;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Extensions;
-using Infrastructure.Context;
+﻿using System.Globalization;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
+using PaperStop.Application.Extensions;
+using PaperStop.Application.Interfaces.Services;
+using PaperStop.Application.Responses.Audit;
+using PaperStop.Infrastructure.Context;
+using PaperStop.Infrastructure.Models.Audit;
+using PaperStop.Infrastructure.Specifications;
+using PaperStop.Shared.Wrapper;
 
-namespace Infrastructure.Services;
+namespace PaperStop.Infrastructure.Services;
 
 public class AuditService : IAuditService
 {

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Domain.Contracts;
-using FPAAgentura.Domain.Enums;
+﻿using PaperStop.Domain.Contracts;
+using PaperStop.Domain.Enums;
 
-namespace FPAAgentura.Application.Features.ExtendedAttributes.Queries.GetById;
+namespace PaperStop.Application.Features.ExtendedAttributes.Queries.GetById;
 
 public class GetExtendedAttributeByIdResponse<TId, TEntityId> : IEntityAuditableExtendedAttribute
 {

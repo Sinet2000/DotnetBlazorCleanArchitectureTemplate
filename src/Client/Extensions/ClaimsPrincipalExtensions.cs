@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace Client.Extensions;
+namespace PaperStop.Client.Extensions;
 
 internal static class ClaimsPrincipalExtensions
 {

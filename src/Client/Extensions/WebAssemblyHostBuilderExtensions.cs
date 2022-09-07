@@ -1,21 +1,18 @@
-﻿using FPAAgentura.Shared.Constants.Permission;
+﻿using System.Globalization;
+using System.Reflection;
+using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using System.Globalization;
-using System.Reflection.Metadata;
-using System.Reflection;
-using Blazored.LocalStorage;
-using Client.Infrastructure.Authentication;
-using Client.Infrastructure.Managers;
-using Client.Infrastructure.Managers.ExtendedAttribute;
-using Client.Infrastructure.Managers.Preferences;
-using Toolbelt.Blazor.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
 using MudBlazor;
 using MudBlazor.Services;
+using PaperStop.Client.Infrastructure.Authentication;
+using PaperStop.Client.Infrastructure.Managers;
+using PaperStop.Client.Infrastructure.Managers.Preferences;
+using PaperStop.Shared.Constants.Permission;
+using Toolbelt.Blazor.Extensions.DependencyInjection;
 
-namespace Client.Extensions;
+namespace PaperStop.Client.Extensions;
 
 public static class WebAssemblyHostBuilderExtensions
     {

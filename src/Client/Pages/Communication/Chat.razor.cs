@@ -1,19 +1,17 @@
-﻿
-
-using Client.Extensions;
-using Client.Infrastructure.Managers.Communication;
-using FPAAgentura.Application.Interfaces.Chat;
-using FPAAgentura.Application.Models.Chat;
-using FPAAgentura.Application.Responses.Identity;
-using FPAAgentura.Shared.Constants.Application;
-using FPAAgentura.Shared.Constants.Storage;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
 using MudBlazor;
+using PaperStop.Application.Interfaces.Chat;
+using PaperStop.Application.Models.Chat;
+using PaperStop.Application.Responses.Identity;
+using PaperStop.Client.Extensions;
+using PaperStop.Client.Infrastructure.Managers.Communication;
+using PaperStop.Shared.Constants.Application;
+using PaperStop.Shared.Constants.Storage;
 
-namespace Client.Pages.Communication
+namespace PaperStop.Client.Pages.Communication
 {
     public partial class Chat
     {

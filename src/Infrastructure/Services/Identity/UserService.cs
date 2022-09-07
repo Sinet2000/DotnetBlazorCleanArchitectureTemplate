@@ -1,29 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Text;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 using AutoMapper;
-using FPAAgentura.Application.Exceptions;
-using FPAAgentura.Application.Extensions;
-using FPAAgentura.Application.Interfaces.Services;
-using FPAAgentura.Application.Interfaces.Services.Identity;
-using FPAAgentura.Application.Requests.Identity;
-using FPAAgentura.Application.Requests.Mail;
-using FPAAgentura.Application.Responses.Identity;
-using FPAAgentura.Shared.Constants.Role;
-using FPAAgentura.Shared.Wrapper;
 using Hangfire;
-using Infrastructure.Models.Identity;
-using Infrastructure.Specifications;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using PaperStop.Application.Exceptions;
+using PaperStop.Application.Extensions;
+using PaperStop.Application.Interfaces.Services;
+using PaperStop.Application.Interfaces.Services.Identity;
+using PaperStop.Application.Requests.Identity;
+using PaperStop.Application.Requests.Mail;
+using PaperStop.Application.Responses.Identity;
+using PaperStop.Infrastructure.Models.Identity;
+using PaperStop.Infrastructure.Specifications;
+using PaperStop.Shared.Constants.Role;
+using PaperStop.Shared.Wrapper;
 
-namespace Infrastructure.Services.Identity;
+namespace PaperStop.Infrastructure.Services.Identity;
 
 public class UserService : IUserService
 {

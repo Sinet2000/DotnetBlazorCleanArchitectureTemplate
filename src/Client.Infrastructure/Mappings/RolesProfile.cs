@@ -1,15 +1,14 @@
 ﻿using AutoMapper;
-using FPAAgentura.Application.Requests.Identity;
-using FPAAgentura.Application.Responses.Identity;
+using PaperStop.Application.Requests.Identity;
+using PaperStop.Application.Responses.Identity;
 
-namespace Client.Infrastructure.Mappings
+namespace PaperStop.Client.Infrastructure.Mappings;
+
+public class RoleProfile : Profile
 {
-    public class RoleProfile : Profile
+    public RoleProfile()
     {
-        public RoleProfile()
-        {
-            CreateMap<PermissionResponse, PermissionRequest>().ReverseMap();
-            CreateMap<RoleClaimResponse, RoleClaimRequest>().ReverseMap();
-        }
+        CreateMap<PermissionResponse, PermissionRequest>().ReverseMap();
+        CreateMap<RoleClaimResponse, RoleClaimRequest>().ReverseMap();
     }
 }

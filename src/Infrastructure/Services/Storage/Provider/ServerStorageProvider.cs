@@ -1,12 +1,7 @@
-﻿using FPAAgentura.Application.Interfaces.Services.Storage.Provider;
-using FPAAgentura.Application.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PaperStop.Application.Interfaces.Services;
+using PaperStop.Application.Interfaces.Services.Storage.Provider;
 
-namespace Infrastructure.Services.Storage.Provider;
+namespace PaperStop.Infrastructure.Services.Storage.Provider;
 
 internal class ServerStorageProvider : IStorageProvider
     {

@@ -1,8 +1,9 @@
 ﻿@page "/identity/user-roles/{Id}"
 @attribute [Authorize(Policy = Permissions.Roles.View)]
 @inject Microsoft.Extensions.Localization.IStringLocalizer<UserRoles> _localizer
-@using FPAAgentura.Application.Responses.Identity
 @using Microsoft.AspNetCore.Components
+@using PaperStop.Application.Responses.Identity
+@using PaperStop.Shared.Constants.Permission
 
 <HeroTitle Title="@Title" Description="@Description" />
 @if (!_loaded)

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
-using FPAAgentura.Application.Requests.Identity;
+﻿using FluentValidation;
 using Microsoft.Extensions.Localization;
+using PaperStop.Application.Requests.Identity;
 
-namespace FPAAgentura.Application.Validators.Requests.Identity;
+namespace PaperStop.Application.Validators.Requests.Identity;
 
 public class RegisterRequestValidator : AbstractValidator<RegisterRequest>
 {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FPAAgentura.Domain.Contracts;
+﻿namespace PaperStop.Domain.Contracts;
 
 public interface IEntityAuditableExtendedAttribute<TId, TEntityId, TEntity>
     : IEntityExtendedAttribute<TId, TEntityId, TEntity>, IAuditableEntity<TId>

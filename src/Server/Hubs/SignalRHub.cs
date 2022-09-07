@@ -1,7 +1,7 @@
-﻿using FPAAgentura.Application.Interfaces.Chat;
-using FPAAgentura.Application.Models.Chat;
-using FPAAgentura.Shared.Constants.Application;
-using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.SignalR;
+using PaperStop.Application.Interfaces.Chat;
+using PaperStop.Application.Models.Chat;
+using PaperStop.Shared.Constants.Application;
 
 namespace Server.Hubs;
 

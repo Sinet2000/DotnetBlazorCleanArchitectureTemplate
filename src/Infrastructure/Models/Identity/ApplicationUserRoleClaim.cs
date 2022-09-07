@@ -1,12 +1,7 @@
-﻿using FPAAgentura.Domain.Contracts;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
+using PaperStop.Domain.Contracts;
 
-namespace Infrastructure.Models.Identity;
+namespace PaperStop.Infrastructure.Models.Identity;
 
 public class ApplicationUserRoleClaim : IdentityRoleClaim<string>, IAuditableEntity<int>
 {

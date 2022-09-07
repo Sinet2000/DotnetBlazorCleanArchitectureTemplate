@@ -1,19 +1,19 @@
 ﻿using System.Security.Claims;
-using Client.Extensions;
-using Client.Infrastructure.Managers.ExtendedAttribute;
-using FPAAgentura.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using FPAAgentura.Application.Features.ExtendedAttributes.Queries.Export;
-using FPAAgentura.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
-using FPAAgentura.Domain.Contracts;
-using FPAAgentura.Domain.Enums;
-using FPAAgentura.Shared.Constants.Application;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
 using MudBlazor;
+using PaperStop.Application.Features.ExtendedAttributes.Commands.AddEdit;
+using PaperStop.Application.Features.ExtendedAttributes.Queries.Export;
+using PaperStop.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
+using PaperStop.Client.Extensions;
+using PaperStop.Client.Infrastructure.Managers.ExtendedAttribute;
+using PaperStop.Domain.Contracts;
+using PaperStop.Domain.Enums;
+using PaperStop.Shared.Constants.Application;
 
-namespace Client.Shared.Components
+namespace PaperStop.Client.Shared.Components
 {
     public class ExtendedAttributesLocalization
     {

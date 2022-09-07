@@ -1,13 +1,8 @@
-﻿using FPAAgentura.Application.Interfaces.Services;
-using FPAAgentura.Application.Requests;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Extensions;
+﻿using PaperStop.Application.Extensions;
+using PaperStop.Application.Interfaces.Services;
+using PaperStop.Application.Requests;
 
-namespace Infrastructure.Services;
+namespace PaperStop.Infrastructure.Services;
 
 public class UploadService : IUploadService
 {

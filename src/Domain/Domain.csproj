@@ -4,8 +4,8 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
-		<RootNamespace>FPAAgentura.Domain</RootNamespace>
-		<AssemblyName>FPAAgentura.Domain</AssemblyName>
+		<RootNamespace>PaperStop.Domain</RootNamespace>
+		<AssemblyName>PaperStop.Domain</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>

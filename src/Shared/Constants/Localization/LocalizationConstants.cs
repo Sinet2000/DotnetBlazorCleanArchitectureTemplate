@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FPAAgentura.Shared.Constants.Localization;
+﻿namespace PaperStop.Shared.Constants.Localization;
 
 public static class LocalizationConstants
 {

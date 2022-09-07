@@ -1,23 +1,18 @@
 ﻿using AutoMapper;
-using FPAAgentura.Application.Exceptions;
-using FPAAgentura.Application.Interfaces.Chat;
-using FPAAgentura.Application.Interfaces.Services.Identity;
-using FPAAgentura.Application.Interfaces.Services;
-using FPAAgentura.Application.Models.Chat;
-using FPAAgentura.Application.Responses.Identity;
-using FPAAgentura.Shared.Constants.Role;
-using FPAAgentura.Shared.Wrapper;
-using Microsoft.Extensions.Localization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Infrastructure.Context;
-using Infrastructure.Models.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
+using PaperStop.Application.Exceptions;
+using PaperStop.Application.Interfaces.Chat;
+using PaperStop.Application.Interfaces.Services;
+using PaperStop.Application.Interfaces.Services.Identity;
+using PaperStop.Application.Models.Chat;
+using PaperStop.Application.Responses.Identity;
+using PaperStop.Infrastructure.Context;
+using PaperStop.Infrastructure.Models.Identity;
+using PaperStop.Shared.Constants.Role;
+using PaperStop.Shared.Wrapper;
 
-namespace Infrastructure.Services;
+namespace PaperStop.Infrastructure.Services;
 
 public class ChatService : IChatService
 {

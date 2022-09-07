@@ -1,16 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Infrastructure.Models.Identity;
-using Infrastructure.Models.Audit;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using FPAAgentura.Application.Enums;
+using PaperStop.Application.Enums;
+using PaperStop.Infrastructure.Models.Audit;
+using PaperStop.Infrastructure.Models.Identity;
 
-namespace Infrastructure.Context;
+namespace PaperStop.Infrastructure.Context;
 
 public abstract class AuditableContext : IdentityDbContext<ApplicationUser, ApplicationUserRole, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, ApplicationUserRoleClaim, IdentityUserToken<string>>
     {

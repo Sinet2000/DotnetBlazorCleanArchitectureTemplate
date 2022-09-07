@@ -1,11 +1,11 @@
 using System.Globalization;
-using Client.Extensions;
-using Client.Infrastructure.Managers.Preferences;
-using Client.Infrastructure.Settings;
-using FPAAgentura.Shared.Constants.Localization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using PaperStop.Client.Extensions;
+using PaperStop.Client.Infrastructure.Managers.Preferences;
+using PaperStop.Client.Infrastructure.Settings;
+using PaperStop.Shared.Constants.Localization;
 
-namespace Client;
+namespace PaperStop.Client;
 
 public static class Program
 {

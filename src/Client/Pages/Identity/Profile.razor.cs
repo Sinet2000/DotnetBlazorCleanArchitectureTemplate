@@ -1,15 +1,13 @@
-﻿using FPAAgentura.Application.Requests.Identity;
-using Client.Extensions;
+﻿using Blazored.FluentValidation;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Blazored.FluentValidation;
-using FPAAgentura.Shared.Constants.Storage;
+using PaperStop.Application.Enums;
+using PaperStop.Application.Requests.Identity;
+using PaperStop.Client.Extensions;
+using PaperStop.Shared.Constants.Storage;
 
-namespace Client.Pages.Identity
+namespace PaperStop.Client.Pages.Identity
 {
     public partial class Profile
     {
@@ -79,7 +77,7 @@ namespace Client.Pages.Identity
                 var imageFile = await e.File.RequestImageFileAsync(format, 400, 400);
                 var buffer = new byte[imageFile.Size];
                 await imageFile.OpenReadStream().ReadAsync(buffer);
-                var request = new UpdateProfilePictureRequest { Data = buffer, FileName = fileName, Extension = extension, UploadType = FPAAgentura.Application.Enums.UploadType.ProfilePicture };
+                var request = new UpdateProfilePictureRequest { Data = buffer, FileName = fileName, Extension = extension, UploadType = UploadType.ProfilePicture };
                 var result = await _accountManager.UpdateProfilePictureAsync(request, UserId);
                 if (result.Succeeded)
                 {
@@ -108,7 +106,7 @@ namespace Client.Pages.Identity
             var result = await dialog.Result;
             if (!result.Cancelled)
             {
-                var request = new UpdateProfilePictureRequest { Data = null, FileName = string.Empty, UploadType = FPAAgentura.Application.Enums.UploadType.ProfilePicture };
+                var request = new UpdateProfilePictureRequest { Data = null, FileName = string.Empty, UploadType = UploadType.ProfilePicture };
                 var data = await _accountManager.UpdateProfilePictureAsync(request, UserId);
                 if (data.Succeeded)
                 {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FPAAgentura.Application.Requests;
+﻿namespace PaperStop.Application.Requests;
 
 public abstract class PagedRequest
 {

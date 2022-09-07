@@ -1,8 +1,8 @@
-﻿using FPAAgentura.Application.Interfaces.Services;
-using FPAAgentura.Shared.Constants.Application;
-using FPAAgentura.Shared.Constants.Localization;
-using Microsoft.AspNetCore.Localization;
+﻿using Microsoft.AspNetCore.Localization;
 using System.Globalization;
+using PaperStop.Application.Interfaces.Services;
+using PaperStop.Shared.Constants.Application;
+using PaperStop.Shared.Constants.Localization;
 using Server.Hubs;
 using Server.Middlewares;
 

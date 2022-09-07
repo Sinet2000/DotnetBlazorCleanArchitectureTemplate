@@ -1,23 +1,18 @@
 ﻿using AutoMapper;
-using FPAAgentura.Application.Interfaces.Services.Identity;
-using FPAAgentura.Application.Interfaces.Services;
-using FPAAgentura.Application.Requests.Identity;
-using FPAAgentura.Application.Responses.Identity;
-using FPAAgentura.Shared.Wrapper;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Localization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Shared.Constants.Permission;
-using FPAAgentura.Shared.Constants.Role;
-using Infrastructure.Helpers;
-using Infrastructure.Models.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
+using PaperStop.Application.Interfaces.Services;
+using PaperStop.Application.Interfaces.Services.Identity;
+using PaperStop.Application.Requests.Identity;
+using PaperStop.Application.Responses.Identity;
+using PaperStop.Infrastructure.Helpers;
+using PaperStop.Infrastructure.Models.Identity;
+using PaperStop.Shared.Constants.Permission;
+using PaperStop.Shared.Constants.Role;
+using PaperStop.Shared.Wrapper;
 
-namespace Infrastructure.Services.Identity;
+namespace PaperStop.Infrastructure.Services.Identity;
 
 public class RoleService : IRoleService
     {

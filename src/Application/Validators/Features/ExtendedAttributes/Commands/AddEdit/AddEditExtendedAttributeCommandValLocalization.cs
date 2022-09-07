@@ -1,15 +1,10 @@
 ﻿using FluentValidation;
-using FPAAgentura.Domain.Contracts;
 using Microsoft.Extensions.Localization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using FPAAgentura.Domain.Enums;
+using PaperStop.Application.Features.ExtendedAttributes.Commands.AddEdit;
+using PaperStop.Domain.Contracts;
+using PaperStop.Domain.Enums;
 
-namespace FPAAgentura.Application.Validators.Features.ExtendedAttributes.Commands.AddEdit;
+namespace PaperStop.Application.Validators.Features.ExtendedAttributes.Commands.AddEdit;
 
 public class AddEditExtendedAttributeCommandValLocalization
 {

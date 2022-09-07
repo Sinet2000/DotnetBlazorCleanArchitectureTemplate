@@ -1,22 +1,17 @@
-﻿using FPAAgentura.Application.Interfaces.Repositories;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using Blazored.LocalStorage.JsonConverters;
-using FPAAgentura.Application.Interfaces.Serialization.Serializers;
-using FPAAgentura.Application.Interfaces.Services.Storage;
-using FPAAgentura.Application.Interfaces.Services.Storage.Provider;
-using FPAAgentura.Application.Serialization.Options;
-using FPAAgentura.Application.Serialization.Serializers;
-using Infrastructure.Repositories;
-using Infrastructure.Services.Storage;
-using Infrastructure.Services.Storage.Provider;
+using Microsoft.Extensions.DependencyInjection;
+using PaperStop.Application.Interfaces.Repositories;
+using PaperStop.Application.Interfaces.Serialization.Serializers;
+using PaperStop.Application.Interfaces.Services.Storage;
+using PaperStop.Application.Interfaces.Services.Storage.Provider;
+using PaperStop.Application.Serialization.Options;
+using PaperStop.Application.Serialization.Serializers;
+using PaperStop.Infrastructure.Repositories;
+using PaperStop.Infrastructure.Services.Storage;
+using PaperStop.Infrastructure.Services.Storage.Provider;
 
-namespace Infrastructure.Extensions;
+namespace PaperStop.Infrastructure.Extensions;
 
 public static class ServiceCollectionExtensions
     {

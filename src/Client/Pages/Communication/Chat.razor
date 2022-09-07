@@ -1,6 +1,7 @@
 ﻿@page "/chat/{CId}"
 @page "/chat"
 @using System.Globalization
+@using PaperStop.Shared.Constants.Permission
 @attribute [Authorize(Policy = Permissions.Communication.Chat)]
 @inject Microsoft.Extensions.Localization.IStringLocalizer<Chat> _localizer
 

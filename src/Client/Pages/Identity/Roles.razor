@@ -1,10 +1,10 @@
 ﻿@page "/identity/roles"
 @attribute [Authorize(Policy = Permissions.Roles.View)]
 @inject Microsoft.Extensions.Localization.IStringLocalizer<Roles> _localizer
-@using FPAAgentura.Application.Responses.Identity
 @using System.ComponentModel.Design
-@using FPAAgentura.Application.Responses.Identity
 @using Microsoft.AspNetCore.Components
+@using PaperStop.Application.Responses.Identity
+@using PaperStop.Shared.Constants.Permission
 
 <style>
     .mud-table-container {

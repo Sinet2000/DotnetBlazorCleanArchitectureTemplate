@@ -1,21 +1,16 @@
-﻿using FPAAgentura.Application.Interfaces.Repositories;
-using FPAAgentura.Application.Interfaces.Services;
-using FPAAgentura.Domain.Contracts;
-using FPAAgentura.Domain.Enums;
-using FPAAgentura.Shared.Wrapper;
+﻿using System.Globalization;
 using MediatR;
-using Microsoft.Extensions.Localization;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Extensions;
-using FPAAgentura.Application.Specifications.ExtendedAttribute;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
+using PaperStop.Application.Extensions;
+using PaperStop.Application.Interfaces.Repositories;
+using PaperStop.Application.Interfaces.Services;
+using PaperStop.Application.Specifications.ExtendedAttribute;
+using PaperStop.Domain.Contracts;
+using PaperStop.Domain.Enums;
+using PaperStop.Shared.Wrapper;
 
-namespace FPAAgentura.Application.Features.ExtendedAttributes.Queries.Export;
+namespace PaperStop.Application.Features.ExtendedAttributes.Queries.Export;
 
 internal class ExportExtendedAttributesQueryLocalization
     {

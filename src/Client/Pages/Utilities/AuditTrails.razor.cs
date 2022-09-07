@@ -1,14 +1,14 @@
 ﻿using System.Security.Claims;
-using Client.Infrastructure.Managers.Audit;
-using FPAAgentura.Application.Responses.Audit;
-using FPAAgentura.Shared.Constants.Application;
-using FPAAgentura.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using MudBlazor;
+using PaperStop.Application.Responses.Audit;
+using PaperStop.Client.Infrastructure.Managers.Audit;
+using PaperStop.Shared.Constants.Application;
+using PaperStop.Shared.Constants.Permission;
 
-namespace Client.Pages.Utilities
+namespace PaperStop.Client.Pages.Utilities
 {
     public partial class AuditTrails
     {

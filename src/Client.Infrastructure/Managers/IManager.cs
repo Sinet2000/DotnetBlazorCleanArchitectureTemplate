@@ -1,4 +1,4 @@
-﻿namespace Client.Infrastructure.Managers;
+﻿namespace PaperStop.Client.Infrastructure.Managers;
 
 public interface IManager
 {

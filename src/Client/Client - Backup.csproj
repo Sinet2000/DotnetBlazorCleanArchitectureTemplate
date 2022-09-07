@@ -7,7 +7,7 @@
 		<Nullable>disable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AssemblyName>PaperStop.Client</AssemblyName>
-		<RootNamespace>PaperStop.Client</RootNamespace>
+		<RootNamespace>FPAAgentura.Client</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

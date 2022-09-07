@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FPAAgentura.Application.Configurations;
-using FPAAgentura.Application.Interfaces.Services;
-using FPAAgentura.Application.Requests.Mail;
-using MailKit.Net.Smtp;
+﻿using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MimeKit;
+using PaperStop.Application.Configurations;
+using PaperStop.Application.Interfaces.Services;
+using PaperStop.Application.Requests.Mail;
 
-namespace Infrastructure.Shared.Services;
+namespace PaperStop.Shared.Infrastructure.Services;
 
 public class SMTPMailService : IMailService
 {

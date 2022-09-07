@@ -1,16 +1,10 @@
-﻿using FPAAgentura.Application.Interfaces.Chat;
-using FPAAgentura.Application.Models.Chat;
-using FPAAgentura.Domain.Contracts;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PaperStop.Application.Interfaces.Chat;
+using PaperStop.Application.Models.Chat;
+using PaperStop.Domain.Contracts;
 
-namespace Infrastructure.Models.Identity;
+namespace PaperStop.Infrastructure.Models.Identity;
 
 public class ApplicationUser : IdentityUser<string>, IChatUser, IAuditableEntity<string>
 {

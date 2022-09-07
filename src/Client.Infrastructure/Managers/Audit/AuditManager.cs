@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Client.Infrastructure.Extensions;
-using FPAAgentura.Application.Responses.Audit;
-using FPAAgentura.Shared.Wrapper;
+﻿using PaperStop.Application.Responses.Audit;
+using PaperStop.Client.Infrastructure.Extensions;
+using PaperStop.Shared.Wrapper;
 
-namespace Client.Infrastructure.Managers.Audit;
+namespace PaperStop.Client.Infrastructure.Managers.Audit;
 
 public class AuditManager : IAuditManager
 {

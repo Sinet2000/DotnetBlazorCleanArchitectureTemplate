@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.Validators;
-using FPAAgentura.Application.Interfaces.Serialization.Serializers;
+using PaperStop.Application.Interfaces.Serialization.Serializers;
 
-namespace FPAAgentura.Application.Validators;
+namespace PaperStop.Application.Validators;
 
 public class JsonValidator<T> : PropertyValidator<T, string>
 {

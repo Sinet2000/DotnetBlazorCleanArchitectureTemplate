@@ -13,33 +13,25 @@
 @using MudBlazor
 @using Blazored.LocalStorage;
 @using Blazored.FluentValidation
-@using Client.Infrastructure.Authentication
 
 @*Client Services*@
-@using Client.Infrastructure.Managers.Identity.Account
-@using Client.Infrastructure.Managers.Identity.Authentication
-@using Client.Infrastructure.Managers.Identity.Roles
-@using Client.Infrastructure.Managers.Identity.RoleClaims
-@using Client.Infrastructure.Managers.Identity.Users
-@using Client.Infrastructure.Managers.Preferences
-@using Client.Infrastructure.Managers.Interceptors
-@using Client.Infrastructure.Managers.Communication
-@using Client.Infrastructure.Managers.Audit
 
 @*Shared Libraries*@
-@using FPAAgentura.Shared.Constants.Permission
 
 @using Client
 @using Client.Shared
 @using Client.Shared.Dialogs
 @using Client.Shared.Components
-@using Client.Infrastructure.Settings
-
-@using FPAAgentura.Application.Requests.Identity
 
 @using Client.Pages.Authentication
 
 @using Client.Extensions
+@using PaperStop.Client.Infrastructure.Authentication
+@using PaperStop.Client.Infrastructure.Managers.Identity.Account
+@using PaperStop.Client.Infrastructure.Managers.Identity.Authentication
+@using PaperStop.Client.Infrastructure.Managers.Identity.Users
+@using PaperStop.Client.Infrastructure.Managers.Interceptors
+@using PaperStop.Client.Infrastructure.Managers.Preferences
 
 @attribute [Authorize]
 @inject IAuthenticationManager _authenticationManager

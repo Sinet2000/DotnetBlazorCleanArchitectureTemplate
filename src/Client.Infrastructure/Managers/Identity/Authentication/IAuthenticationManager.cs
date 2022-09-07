@@ -1,21 +1,20 @@
 ﻿using System.Security.Claims;
-using FPAAgentura.Application.Requests.Identity;
-using FPAAgentura.Shared.Wrapper;
+using PaperStop.Application.Requests.Identity;
+using PaperStop.Shared.Wrapper;
 
-namespace Client.Infrastructure.Managers.Identity.Authentication
+namespace PaperStop.Client.Infrastructure.Managers.Identity.Authentication;
+
+public interface IAuthenticationManager : IManager
 {
-    public interface IAuthenticationManager : IManager
-    {
-        Task<IResult> Login(TokenRequest model);
+    Task<IResult> Login(TokenRequest model);
 
-        Task<IResult> Logout();
+    Task<IResult> Logout();
 
-        Task<string> RefreshToken();
+    Task<string> RefreshToken();
 
-        Task<string> TryRefreshToken();
+    Task<string> TryRefreshToken();
 
-        Task<string> TryForceRefreshToken();
+    Task<string> TryForceRefreshToken();
 
-        Task<ClaimsPrincipal> CurrentUser();
-    }
+    Task<ClaimsPrincipal> CurrentUser();
 }

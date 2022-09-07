@@ -1,12 +1,12 @@
 ﻿using System.Security.Claims;
-using FPAAgentura.Application.Requests.Identity;
-using FPAAgentura.Application.Responses.Identity;
-using FPAAgentura.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
+using PaperStop.Application.Requests.Identity;
+using PaperStop.Application.Responses.Identity;
+using PaperStop.Shared.Constants.Permission;
 
-namespace Client.Pages.Identity
+namespace PaperStop.Client.Pages.Identity
 {
     public partial class UserRoles
     {

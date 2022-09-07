@@ -1,97 +1,94 @@
-﻿
-
-using Blazored.LocalStorage;
-using Client.Infrastructure.Settings;
-using FPAAgentura.Shared.Constants.Storage;
-using FPAAgentura.Shared.Settings;
-using FPAAgentura.Shared.Wrapper;
+﻿using Blazored.LocalStorage;
 using Microsoft.Extensions.Localization;
 using MudBlazor;
+using PaperStop.Client.Infrastructure.Settings;
+using PaperStop.Shared.Constants.Storage;
+using PaperStop.Shared.Settings;
+using PaperStop.Shared.Wrapper;
 
-namespace Client.Infrastructure.Managers.Preferences
+namespace PaperStop.Client.Infrastructure.Managers.Preferences;
+
+public class ClientPreferenceManager : IClientPreferenceManager
 {
-    public class ClientPreferenceManager : IClientPreferenceManager
+    private readonly ILocalStorageService _localStorageService;
+    private readonly IStringLocalizer<ClientPreferenceManager> _localizer;
+
+    public ClientPreferenceManager(
+        ILocalStorageService localStorageService,
+        IStringLocalizer<ClientPreferenceManager> localizer)
     {
-        private readonly ILocalStorageService _localStorageService;
-        private readonly IStringLocalizer<ClientPreferenceManager> _localizer;
+        _localStorageService = localStorageService;
+        _localizer = localizer;
+    }
 
-        public ClientPreferenceManager(
-            ILocalStorageService localStorageService,
-            IStringLocalizer<ClientPreferenceManager> localizer)
+    public async Task<bool> ToggleDarkModeAsync()
+    {
+        var preference = await GetPreference() as ClientPreference;
+        if (preference != null)
         {
-            _localStorageService = localStorageService;
-            _localizer = localizer;
+            preference.IsDarkMode = !preference.IsDarkMode;
+            await SetPreference(preference);
+            return !preference.IsDarkMode;
         }
 
-        public async Task<bool> ToggleDarkModeAsync()
+        return false;
+    }
+    public async Task<bool> ToggleLayoutDirection()
+    {
+        var preference = await GetPreference() as ClientPreference;
+        if (preference != null)
         {
-            var preference = await GetPreference() as ClientPreference;
-            if (preference != null)
-            {
-                preference.IsDarkMode = !preference.IsDarkMode;
-                await SetPreference(preference);
-                return !preference.IsDarkMode;
-            }
-
-            return false;
-        }
-        public async Task<bool> ToggleLayoutDirection()
-        {
-            var preference = await GetPreference() as ClientPreference;
-            if (preference != null)
-            {
-                preference.IsRTL = !preference.IsRTL;
-                await SetPreference(preference);
-                return preference.IsRTL;
-            }
-            return false;
-        }
-
-        public async Task<IResult> ChangeLanguageAsync(string languageCode)
-        {
-            var preference = await GetPreference() as ClientPreference;
-            if (preference != null)
-            {
-                preference.LanguageCode = languageCode;
-                await SetPreference(preference);
-                return new Result
-                {
-                    Succeeded = true,
-                    Messages = new List<string> { _localizer["Client Language has been changed"] }
-                };
-            }
-
-            return new Result
-            {
-                Succeeded = false,
-                Messages = new List<string> { _localizer["Failed to get client preferences"] }
-            };
-        }
-        
-        public async Task<MudTheme> GetCurrentThemeAsync()
-        {
-            if (await GetPreference() is ClientPreference {IsDarkMode: true}) return ClientAppTheme.DarkTheme;
-            return ClientAppTheme.DefaultTheme;
-        }
-
-        public async Task<bool> IsRTL()
-        {
-            var preference = await GetPreference() as ClientPreference;
-            if (preference != null)
-            {
-                if (preference.IsDarkMode == true) return false;
-            }
+            preference.IsRTL = !preference.IsRTL;
+            await SetPreference(preference);
             return preference.IsRTL;
         }
+        return false;
+    }
 
-        public async Task<IPreference> GetPreference()
+    public async Task<IResult> ChangeLanguageAsync(string languageCode)
+    {
+        var preference = await GetPreference() as ClientPreference;
+        if (preference != null)
         {
-            return await _localStorageService.GetItemAsync<ClientPreference>(StorageConstants.Local.Preference) ?? new ClientPreference();
+            preference.LanguageCode = languageCode;
+            await SetPreference(preference);
+            return new Result
+            {
+                Succeeded = true,
+                Messages = new List<string> { _localizer["Client Language has been changed"] }
+            };
         }
 
-        public async Task SetPreference(IPreference preference)
+        return new Result
         {
-            await _localStorageService.SetItemAsync(StorageConstants.Local.Preference, preference as ClientPreference);
+            Succeeded = false,
+            Messages = new List<string> { _localizer["Failed to get client preferences"] }
+        };
+    }
+        
+    public async Task<MudTheme> GetCurrentThemeAsync()
+    {
+        if (await GetPreference() is ClientPreference {IsDarkMode: true}) return ClientAppTheme.DarkTheme;
+        return ClientAppTheme.DefaultTheme;
+    }
+
+    public async Task<bool> IsRTL()
+    {
+        var preference = await GetPreference() as ClientPreference;
+        if (preference != null)
+        {
+            if (preference.IsDarkMode == true) return false;
         }
+        return preference.IsRTL;
+    }
+
+    public async Task<IPreference> GetPreference()
+    {
+        return await _localStorageService.GetItemAsync<ClientPreference>(StorageConstants.Local.Preference) ?? new ClientPreference();
+    }
+
+    public async Task SetPreference(IPreference preference)
+    {
+        await _localStorageService.SetItemAsync(StorageConstants.Local.Preference, preference as ClientPreference);
     }
 }
