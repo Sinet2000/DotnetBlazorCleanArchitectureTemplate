@@ -9,12 +9,12 @@ using PaperStop.Application.Requests.Mail;
 
 namespace PaperStop.Shared.Infrastructure.Services;
 
-public class SMTPMailService : IMailService
+public class SmtpMailService : IMailService
 {
     private readonly MailConfiguration _config;
-    private readonly ILogger<SMTPMailService> _logger;
+    private readonly ILogger<SmtpMailService> _logger;
 
-    public SMTPMailService(IOptions<MailConfiguration> config, ILogger<SMTPMailService> logger)
+    public SmtpMailService(IOptions<MailConfiguration> config, ILogger<SmtpMailService> logger)
     {
         _config = config.Value;
         _logger = logger;

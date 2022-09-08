@@ -4,12 +4,12 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Localization;
 using PaperStop.Application.Extensions;
 using PaperStop.Infrastructure.Extensions;
-using Server.Extensions;
-using Server.Filters;
-using Server.Managers.Preferences;
-using Server.Middlewares;
+using PaperStop.Server.Extensions;
+using PaperStop.Server.Filters;
+using PaperStop.Server.Managers.Preferences;
+using PaperStop.Server.Middlewares;
 
-namespace Server
+namespace PaperStop.Server
 {
     public class Startup
     {

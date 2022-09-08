@@ -6,12 +6,12 @@ namespace PaperStop.Client.Extensions;
 
 public static class HubExtensions
 {
-    public static HubConnection TryInitialize(this HubConnection hubConnection, NavigationManager navigationManager)
+    public static HubConnection TryInitialize(this HubConnection hubConnection, NavigationManager navigationManager, string apiAddress)
     {
         if (hubConnection == null)
         {
             hubConnection = new HubConnectionBuilder()
-                .WithUrl(navigationManager.ToAbsoluteUri(ApplicationConstants.SignalR.HubUrl))
+                .WithUrl($"{apiAddress.TrimEnd('/')}/{ApplicationConstants.SignalR.HubUrl.TrimStart('/')}")
                 .Build();
         }
         return hubConnection;

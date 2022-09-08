@@ -12,17 +12,17 @@ namespace PaperStop.Client.Pages.Identity
 
         private async Task SubmitAsync()
         {
-            var result = await _userManager.ForgotPasswordAsync(_emailModel);
+            var result = await UserManager.ForgotPasswordAsync(_emailModel);
             if (result.Succeeded)
             {
-                _snackBar.Add(_localizer["Done!"], Severity.Success);
-                _navigationManager.NavigateTo("/");
+                SnackBar.Add(Localizer["Done!"], Severity.Success);
+                NavigationManager.NavigateTo("/");
             }
             else
             {
                 foreach (var message in result.Messages)
                 {
-                    _snackBar.Add(message, Severity.Error);
+                    SnackBar.Add(message, Severity.Error);
                 }
             }
         }

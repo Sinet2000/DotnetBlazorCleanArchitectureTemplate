@@ -11,7 +11,7 @@ public class UnitOfWork<TId> : IUnitOfWork<TId>
     {
         private readonly ICurrentUserService _currentUserService;
         private readonly AppDbContext _dbContext;
-        private bool disposed;
+        private bool _disposed;
         private Hashtable _repositories;
         private readonly IAppCache _cache;
 
@@ -69,7 +69,7 @@ public class UnitOfWork<TId> : IUnitOfWork<TId>
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!_disposed)
             {
                 if (disposing)
                 {
@@ -78,6 +78,6 @@ public class UnitOfWork<TId> : IUnitOfWork<TId>
                 }
             }
             //dispose unmanaged resources
-            disposed = true;
+            _disposed = true;
         }
     }

@@ -70,14 +70,14 @@ namespace PaperStop.Client.Shared.Components
             var response = await ExtendedAttributeManager.SaveAsync(AddEditExtendedAttributeModel);
             if (response.Succeeded)
             {
-                _snackBar.Add(response.Messages[0], Severity.Success);
+                SnackBar.Add(response.Messages[0], Severity.Success);
                 MudDialog.Close();
             }
             else
             {
                 foreach (var message in response.Messages)
                 {
-                    _snackBar.Add(message, Severity.Error);
+                    SnackBar.Add(message, Severity.Error);
                 }
             }
             await HubConnection.SendAsync(ApplicationConstants.SignalR.SendUpdateDashboard);
@@ -86,7 +86,9 @@ namespace PaperStop.Client.Shared.Components
         protected override async Task OnInitializedAsync()
         {
             await LoadDataAsync();
-            HubConnection = HubConnection.TryInitialize(_navigationManager);
+
+            var apiAddress = Configuration[$"{ClientAppConfiguration.ConfigKey}:{nameof(ClientAppConfiguration.ApiAddress)}"];
+            HubConnection = HubConnection.TryInitialize(NavigationManager, apiAddress);
             if (HubConnection.State == HubConnectionState.Disconnected)
             {
                 await HubConnection.StartAsync();

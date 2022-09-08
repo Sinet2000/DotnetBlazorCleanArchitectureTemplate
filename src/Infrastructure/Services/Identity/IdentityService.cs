@@ -63,7 +63,7 @@ public class IdentityService : ITokenService
             await _userManager.UpdateAsync(user);
 
             var token = await GenerateJwtAsync(user);
-            var response = new TokenResponse { Token = token, RefreshToken = user.RefreshToken, UserImageURL = user.ProfilePictureDataUrl };
+            var response = new TokenResponse { Token = token, RefreshToken = user.RefreshToken, UserImageUrl = user.ProfilePictureDataUrl };
             return await Result<TokenResponse>.SuccessAsync(response);
         }
 

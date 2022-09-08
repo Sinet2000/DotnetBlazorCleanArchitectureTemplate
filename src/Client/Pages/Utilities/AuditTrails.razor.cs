@@ -61,7 +61,7 @@ namespace PaperStop.Client.Pages.Utilities
             {
                 result = false;
             }
-            if (_dateRange?.End != null && response.DateTime > _dateRange.End + new TimeSpan(0,11, 59, 59, 999))
+            if (_dateRange?.End != null && response.DateTime > _dateRange.End + new TimeSpan(0, 11, 59, 59, 999))
             {
                 result = false;
             }
@@ -71,9 +71,9 @@ namespace PaperStop.Client.Pages.Utilities
 
         protected override async Task OnInitializedAsync()
         {
-            _currentUser = await _authenticationManager.CurrentUser();
-            _canExportAuditTrails = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.AuditTrails.Export)).Succeeded;
-            _canSearchAuditTrails = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.AuditTrails.Search)).Succeeded;
+            _currentUser = await AuthenticationManager.CurrentUser();
+            _canExportAuditTrails = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.AuditTrails.Export)).Succeeded;
+            _canSearchAuditTrails = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.AuditTrails.Search)).Succeeded;
 
             await GetDataAsync();
             _loaded = true;
@@ -103,7 +103,7 @@ namespace PaperStop.Client.Pages.Utilities
             {
                 foreach (var message in response.Messages)
                 {
-                    _snackBar.Add(message, Severity.Error);
+                    SnackBar.Add(message, Severity.Error);
                 }
             }
         }
@@ -123,21 +123,21 @@ namespace PaperStop.Client.Pages.Utilities
             var response = await AuditManager.DownloadFileAsync(_searchString, _searchInOldValues, _searchInNewValues);
             if (response.Succeeded)
             {
-                await _jsRuntime.InvokeVoidAsync("Download", new
+                await JsRuntime.InvokeVoidAsync("Download", new
                 {
                     ByteArray = response.Data,
                     FileName = $"{nameof(AuditTrails).ToLower()}_{DateTime.Now:ddMMyyyyHHmmss}.xlsx",
                     MimeType = ApplicationConstants.MimeTypes.OpenXml
                 });
-                _snackBar.Add(string.IsNullOrWhiteSpace(_searchString)
-                    ? _localizer["Audit Trails exported"]
-                    : _localizer["Filtered Audit Trails exported"], Severity.Success);
+                SnackBar.Add(string.IsNullOrWhiteSpace(_searchString)
+                    ? Localizer["Audit Trails exported"]
+                    : Localizer["Filtered Audit Trails exported"], Severity.Success);
             }
             else
             {
                 foreach (var message in response.Messages)
                 {
-                    _snackBar.Add(message, Severity.Error);
+                    SnackBar.Add(message, Severity.Error);
                 }
             }
         }

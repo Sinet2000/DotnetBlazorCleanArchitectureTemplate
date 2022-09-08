@@ -47,12 +47,12 @@ public class AuthenticationManager : IAuthenticationManager
         {
             var token = result.Data.Token;
             var refreshToken = result.Data.RefreshToken;
-            var userImageURL = result.Data.UserImageURL;
+            var userImageUrl = result.Data.UserImageUrl;
             await _localStorage.SetItemAsync(StorageConstants.Local.AuthToken, token);
             await _localStorage.SetItemAsync(StorageConstants.Local.RefreshToken, refreshToken);
-            if (!string.IsNullOrEmpty(userImageURL))
+            if (!string.IsNullOrEmpty(userImageUrl))
             {
-                await _localStorage.SetItemAsync(StorageConstants.Local.UserImageURL, userImageURL);
+                await _localStorage.SetItemAsync(StorageConstants.Local.UserImageUrl, userImageUrl);
             }
             ((ClientAppStateProvider)this._authenticationStateProvider).MarkUserAsAuthenticated(model.Email);
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -68,7 +68,7 @@ public class AuthenticationManager : IAuthenticationManager
     {
         await _localStorage.RemoveItemAsync(StorageConstants.Local.AuthToken);
         await _localStorage.RemoveItemAsync(StorageConstants.Local.RefreshToken);
-        await _localStorage.RemoveItemAsync(StorageConstants.Local.UserImageURL);
+        await _localStorage.RemoveItemAsync(StorageConstants.Local.UserImageUrl);
         ((ClientAppStateProvider)_authenticationStateProvider).MarkUserAsLoggedOut();
         _httpClient.DefaultRequestHeaders.Authorization = null;
         return await Result.SuccessAsync();
@@ -105,8 +105,8 @@ public class AuthenticationManager : IAuthenticationManager
         var user = authState.User;
         var exp = user.FindFirst(c => c.Type.Equals("exp"))?.Value;
         var expTime = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt64(exp));
-        var timeUTC = DateTime.UtcNow;
-        var diff = expTime - timeUTC;
+        var timeUtc = DateTime.UtcNow;
+        var diff = expTime - timeUtc;
         if (diff.TotalMinutes <= 1)
             return await RefreshToken();
         return string.Empty;

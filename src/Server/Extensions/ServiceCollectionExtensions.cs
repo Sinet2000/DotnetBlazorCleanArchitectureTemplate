@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using System.Globalization;
+using System.Net;
+using System.Reflection;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -6,19 +11,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Server.Managers.Preferences;
-using Server.Permission;
-using Server.Services;
-using Server.Settings;
-using System.Globalization;
-using System.Net;
-using System.Reflection;
-using System.Security.Claims;
-using System.Text;
-using Infrastructure;
 using Newtonsoft.Json;
-using Server.Localization;
-using Microsoft.Extensions.Configuration;
 using PaperStop.Application.Configurations;
 using PaperStop.Application.Interfaces.Serialization.Options;
 using PaperStop.Application.Interfaces.Serialization.Serializers;
@@ -35,12 +28,17 @@ using PaperStop.Infrastructure.Context;
 using PaperStop.Infrastructure.Models.Identity;
 using PaperStop.Infrastructure.Services;
 using PaperStop.Infrastructure.Services.Identity;
+using PaperStop.Server.Localization;
+using PaperStop.Server.Managers.Preferences;
+using PaperStop.Server.Permission;
+using PaperStop.Server.Services;
+using PaperStop.Server.Settings;
 using PaperStop.Shared.Constants.Localization;
 using PaperStop.Shared.Constants.Permission;
 using PaperStop.Shared.Infrastructure.Services;
 using PaperStop.Shared.Wrapper;
 
-namespace Server.Extensions
+namespace PaperStop.Server.Extensions
 {
     internal static class ServiceCollectionExtensions
     {
@@ -205,7 +203,7 @@ namespace Server.Extensions
         {
             services.AddTransient<IDateTimeService, SystemDateTimeService>();
             services.Configure<MailConfiguration>(configuration.GetSection("MailConfiguration"));
-            services.AddTransient<IMailService, SMTPMailService>();
+            services.AddTransient<IMailService, SmtpMailService>();
             return services;
         }
 

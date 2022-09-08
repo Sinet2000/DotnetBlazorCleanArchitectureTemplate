@@ -26,11 +26,11 @@ namespace PaperStop.Client.Pages.Identity
 
         protected override async Task OnInitializedAsync()
         {
-            _currentUser = await _authenticationManager.CurrentUser();
-            _canCreateUsers = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.Users.Create)).Succeeded;
-            _canSearchUsers = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.Users.Search)).Succeeded;
-            _canExportUsers = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.Users.Export)).Succeeded;
-            _canViewRoles = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.Roles.View)).Succeeded;
+            _currentUser = await AuthenticationManager.CurrentUser();
+            _canCreateUsers = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.Users.Create)).Succeeded;
+            _canSearchUsers = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.Users.Search)).Succeeded;
+            _canExportUsers = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.Users.Export)).Succeeded;
+            _canViewRoles = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.Roles.View)).Succeeded;
 
             await GetUsersAsync();
             _loaded = true;
@@ -38,7 +38,7 @@ namespace PaperStop.Client.Pages.Identity
 
         private async Task GetUsersAsync()
         {
-            var response = await _userManager.GetAllAsync();
+            var response = await UserManager.GetAllAsync();
             if (response.Succeeded)
             {
                 _userList = response.Data.ToList();
@@ -47,7 +47,7 @@ namespace PaperStop.Client.Pages.Identity
             {
                 foreach (var message in response.Messages)
                 {
-                    _snackBar.Add(message, Severity.Error);
+                    SnackBar.Add(message, Severity.Error);
                 }
             }
         }
@@ -80,23 +80,23 @@ namespace PaperStop.Client.Pages.Identity
 
         private async Task ExportToExcel()
         {
-            var base64 = await _userManager.ExportToExcelAsync(_searchString);
-            await _jsRuntime.InvokeVoidAsync("Download", new
+            var base64 = await UserManager.ExportToExcelAsync(_searchString);
+            await JsRuntime.InvokeVoidAsync("Download", new
             {
                 ByteArray = base64,
                 FileName = $"{nameof(Users).ToLower()}_{DateTime.Now:ddMMyyyyHHmmss}.xlsx",
                 MimeType = ApplicationConstants.MimeTypes.OpenXml
             });
-            _snackBar.Add(string.IsNullOrWhiteSpace(_searchString)
-                ? _localizer["Users exported"]
-                : _localizer["Filtered Users exported"], Severity.Success);
+            SnackBar.Add(string.IsNullOrWhiteSpace(_searchString)
+                ? Localizer["Users exported"]
+                : Localizer["Filtered Users exported"], Severity.Success);
         }
 
         private async Task InvokeModal()
         {
             var parameters = new DialogParameters();
             var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true, DisableBackdropClick = true };
-            var dialog = _dialogService.Show<RegisterUserModal>(_localizer["Register New User"], parameters, options);
+            var dialog = DialogService.Show<RegisterUserModal>(Localizer["Register New User"], parameters, options);
             var result = await dialog.Result;
             if (!result.Cancelled)
             {
@@ -106,13 +106,13 @@ namespace PaperStop.Client.Pages.Identity
 
         private void ViewProfile(string userId)
         {
-            _navigationManager.NavigateTo($"/user-profile/{userId}");
+            NavigationManager.NavigateTo($"/user-profile/{userId}");
         }
 
         private void ManageRoles(string userId, string email)
         {
-            if (email == "mukesh@blazorhero.com") _snackBar.Add(_localizer["Not Allowed."], Severity.Error);
-            else _navigationManager.NavigateTo($"/identity/user-roles/{userId}");
+            if (email == "mukesh@blazorhero.com") SnackBar.Add(Localizer["Not Allowed."], Severity.Error);
+            else NavigationManager.NavigateTo($"/identity/user-roles/{userId}");
         }
     }
 }

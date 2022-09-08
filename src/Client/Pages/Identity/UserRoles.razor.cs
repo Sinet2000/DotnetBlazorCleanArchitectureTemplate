@@ -28,20 +28,20 @@ namespace PaperStop.Client.Pages.Identity
 
         protected override async Task OnInitializedAsync()
         {
-            _currentUser = await _authenticationManager.CurrentUser();
-            _canEditUsers = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.Users.Edit)).Succeeded;
-            _canSearchRoles = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.Roles.Search)).Succeeded;
+            _currentUser = await AuthenticationManager.CurrentUser();
+            _canEditUsers = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.Users.Edit)).Succeeded;
+            _canSearchRoles = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.Roles.Search)).Succeeded;
 
             var userId = Id;
-            var result = await _userManager.GetAsync(userId);
+            var result = await UserManager.GetAsync(userId);
             if (result.Succeeded)
             {
                 var user = result.Data;
                 if (user != null)
                 {
                     Title = $"{user.FirstName} {user.LastName}";
-                    Description = string.Format(_localizer["Manage {0} {1}'s Roles"], user.FirstName, user.LastName);
-                    var response = await _userManager.GetRolesAsync(user.Id);
+                    Description = string.Format(Localizer["Manage {0} {1}'s Roles"], user.FirstName, user.LastName);
+                    var response = await UserManager.GetRolesAsync(user.Id);
                     UserRolesList = response.Data.UserRoles;
                 }
             }
@@ -56,17 +56,17 @@ namespace PaperStop.Client.Pages.Identity
                 UserId = Id,
                 UserRoles = UserRolesList
             };
-            var result = await _userManager.UpdateRolesAsync(request);
+            var result = await UserManager.UpdateRolesAsync(request);
             if (result.Succeeded)
             {
-                _snackBar.Add(result.Messages[0], Severity.Success);
-                _navigationManager.NavigateTo("/identity/users");
+                SnackBar.Add(result.Messages[0], Severity.Success);
+                NavigationManager.NavigateTo("/identity/users");
             }
             else
             {
                 foreach (var error in result.Messages)
                 {
-                    _snackBar.Add(error, Severity.Error);
+                    SnackBar.Add(error, Severity.Error);
                 }
             }
         }

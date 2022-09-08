@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
 using PaperStop.Client.Infrastructure.Managers.Identity.Authentication;
 using Toolbelt.Blazor;

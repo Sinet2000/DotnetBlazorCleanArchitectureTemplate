@@ -35,16 +35,18 @@ namespace PaperStop.Client.Pages.Identity
 
         protected override async Task OnInitializedAsync()
         {
-            _currentUser = await _authenticationManager.CurrentUser();
-            _canCreateRoles = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.Roles.Create)).Succeeded;
-            _canEditRoles = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.Roles.Edit)).Succeeded;
-            _canDeleteRoles = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.Roles.Delete)).Succeeded;
-            _canSearchRoles = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.Roles.Search)).Succeeded;
-            _canViewRoleClaims = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.RoleClaims.View)).Succeeded;
+            _currentUser = await AuthenticationManager.CurrentUser();
+            _canCreateRoles = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.Roles.Create)).Succeeded;
+            _canEditRoles = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.Roles.Edit)).Succeeded;
+            _canDeleteRoles = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.Roles.Delete)).Succeeded;
+            _canSearchRoles = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.Roles.Search)).Succeeded;
+            _canViewRoleClaims = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.RoleClaims.View)).Succeeded;
 
             await GetRolesAsync();
             _loaded = true;
-            HubConnection = HubConnection.TryInitialize(_navigationManager);
+
+            var apiAddress = Configuration[$"{ClientAppConfiguration.ConfigKey}:{nameof(ClientAppConfiguration.ApiAddress)}"];
+            HubConnection = HubConnection.TryInitialize(NavigationManager, apiAddress);
             if (HubConnection.State == HubConnectionState.Disconnected)
             {
                 await HubConnection.StartAsync();
@@ -62,20 +64,20 @@ namespace PaperStop.Client.Pages.Identity
             {
                 foreach (var message in response.Messages)
                 {
-                    _snackBar.Add(message, Severity.Error);
+                    SnackBar.Add(message, Severity.Error);
                 }
             }
         }
 
         private async Task Delete(string id)
         {
-            string deleteContent = _localizer["Delete Content"];
+            string deleteContent = Localizer["Delete Content"];
             var parameters = new DialogParameters
             {
                 {nameof(Shared.Dialogs.DeleteConfirmation.ContentText), string.Format(deleteContent, id)}
             };
             var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true, DisableBackdropClick = true };
-            var dialog = _dialogService.Show<Shared.Dialogs.DeleteConfirmation>(_localizer["Delete"], parameters, options);
+            var dialog = DialogService.Show<Shared.Dialogs.DeleteConfirmation>(Localizer["Delete"], parameters, options);
             var result = await dialog.Result;
             if (!result.Cancelled)
             {
@@ -84,14 +86,14 @@ namespace PaperStop.Client.Pages.Identity
                 {
                     await Reset();
                     await HubConnection.SendAsync(ApplicationConstants.SignalR.SendUpdateDashboard);
-                    _snackBar.Add(response.Messages[0], Severity.Success);
+                    SnackBar.Add(response.Messages[0], Severity.Success);
                 }
                 else
                 {
                     await Reset();
                     foreach (var message in response.Messages)
                     {
-                        _snackBar.Add(message, Severity.Error);
+                        SnackBar.Add(message, Severity.Error);
                     }
                 }
             }
@@ -114,7 +116,7 @@ namespace PaperStop.Client.Pages.Identity
                 }
             }
             var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true, DisableBackdropClick = true };
-            var dialog = _dialogService.Show<RoleModal>(id == null ? _localizer["Create"] : _localizer["Edit"], parameters, options);
+            var dialog = DialogService.Show<RoleModal>(id == null ? Localizer["Create"] : Localizer["Edit"], parameters, options);
             var result = await dialog.Result;
             if (!result.Cancelled)
             {
@@ -144,7 +146,7 @@ namespace PaperStop.Client.Pages.Identity
 
         private void ManagePermissions(string roleId)
         {
-            _navigationManager.NavigateTo($"/identity/role-permissions/{roleId}");
+            NavigationManager.NavigateTo($"/identity/role-permissions/{roleId}");
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Text.Json;
 using PaperStop.Application.Exceptions;
 using PaperStop.Shared.Wrapper;
 
-namespace Server.Middlewares;
+namespace PaperStop.Server.Middlewares;
 
 public class ErrorHandlerMiddleware
 {

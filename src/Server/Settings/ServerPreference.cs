@@ -1,7 +1,7 @@
 ﻿using PaperStop.Shared.Constants.Localization;
 using PaperStop.Shared.Settings;
 
-namespace Server.Settings;
+namespace PaperStop.Server.Settings;
 
 public record ServerPreference : IPreference
 {

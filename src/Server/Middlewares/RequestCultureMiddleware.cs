@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Server.Middlewares;
+namespace PaperStop.Server.Middlewares;
 
 public class RequestCultureMiddleware
 {

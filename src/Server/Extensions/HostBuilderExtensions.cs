@@ -1,6 +1,6 @@
 ﻿using Serilog;
 
-namespace Server.Extensions;
+namespace PaperStop.Server.Extensions;
 
 internal static class HostBuilderExtensions
 {

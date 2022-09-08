@@ -40,13 +40,16 @@ namespace PaperStop.Client.Pages.Identity
 
         protected override async Task OnInitializedAsync()
         {
-            _currentUser = await _authenticationManager.CurrentUser();
-            _canEditRolePermissions = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.RoleClaims.Edit)).Succeeded;
-            _canSearchRolePermissions = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.RoleClaims.Search)).Succeeded;
+            _currentUser = await AuthenticationManager.CurrentUser();
+            _canEditRolePermissions = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.RoleClaims.Edit)).Succeeded;
+            _canSearchRolePermissions = (await AuthorizationService.AuthorizeAsync(_currentUser, Permissions.RoleClaims.Search)).Succeeded;
 
             await GetRolePermissionsAsync();
             _loaded = true;
-            HubConnection = HubConnection.TryInitialize(_navigationManager);
+
+            var apiAddress = Configuration[$"{ClientAppConfiguration.ConfigKey}:{nameof(ClientAppConfiguration.ApiAddress)}"];
+
+            HubConnection = HubConnection.TryInitialize(NavigationManager, apiAddress);
             if (HubConnection.State == HubConnectionState.Disconnected)
             {
                 await HubConnection.StartAsync();
@@ -61,7 +64,7 @@ namespace PaperStop.Client.Pages.Identity
             if (result.Succeeded)
             {
                 _model = result.Data;
-                GroupedRoleClaims.Add(_localizer["All Permissions"], _model.RoleClaims);
+                GroupedRoleClaims.Add(Localizer["All Permissions"], _model.RoleClaims);
                 foreach (var claim in _model.RoleClaims)
                 {
                     if (GroupedRoleClaims.ContainsKey(claim.Group))
@@ -75,16 +78,16 @@ namespace PaperStop.Client.Pages.Identity
                 }
                 if (_model != null)
                 {
-                    Description = string.Format(_localizer["Manage {0} {1}'s Permissions"], _model.RoleId, _model.RoleName);
+                    Description = string.Format(Localizer["Manage {0} {1}'s Permissions"], _model.RoleId, _model.RoleName);
                 }
             }
             else
             {
                 foreach (var error in result.Messages)
                 {
-                    _snackBar.Add(error, Severity.Error);
+                    SnackBar.Add(error, Severity.Error);
                 }
-                _navigationManager.NavigateTo("/identity/roles");
+                NavigationManager.NavigateTo("/identity/roles");
             }
         }
 
@@ -94,16 +97,16 @@ namespace PaperStop.Client.Pages.Identity
             var result = await RoleManager.UpdatePermissionsAsync(request);
             if (result.Succeeded)
             {
-                _snackBar.Add(result.Messages[0], Severity.Success);
+                SnackBar.Add(result.Messages[0], Severity.Success);
                 await HubConnection.SendAsync(ApplicationConstants.SignalR.SendRegenerateTokens);
                 await HubConnection.SendAsync(ApplicationConstants.SignalR.OnChangeRolePermissions, _currentUser.GetUserId(), request.RoleId);
-                _navigationManager.NavigateTo("/identity/roles");
+                NavigationManager.NavigateTo("/identity/roles");
             }
             else
             {
                 foreach (var error in result.Messages)
                 {
-                    _snackBar.Add(error, Severity.Error);
+                    SnackBar.Add(error, Severity.Error);
                 }
             }
         }

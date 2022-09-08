@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Localization;
-using System.Globalization;
+﻿using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 using PaperStop.Application.Interfaces.Services;
+using PaperStop.Server.Hubs;
+using PaperStop.Server.Middlewares;
 using PaperStop.Shared.Constants.Application;
 using PaperStop.Shared.Constants.Localization;
-using Server.Hubs;
-using Server.Middlewares;
 
-namespace Server.Extensions;
+namespace PaperStop.Server.Extensions;
 
 internal static class ApplicationBuilderExtensions
     {
@@ -56,7 +56,7 @@ internal static class ApplicationBuilderExtensions
             return app;
         }
 
-        internal static IApplicationBuilder Initialize(this IApplicationBuilder app, Microsoft.Extensions.Configuration.IConfiguration _configuration)
+        internal static IApplicationBuilder Initialize(this IApplicationBuilder app, Microsoft.Extensions.Configuration.IConfiguration configuration)
         {
             using var serviceScope = app.ApplicationServices.CreateScope();
 

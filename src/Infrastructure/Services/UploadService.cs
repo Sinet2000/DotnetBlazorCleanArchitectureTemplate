@@ -37,7 +37,7 @@ public class UploadService : IUploadService
         }
     }
 
-    private static string numberPattern = " ({0})";
+    private static string _numberPattern = " ({0})";
 
     public static string NextAvailableFilename(string path)
     {
@@ -47,10 +47,10 @@ public class UploadService : IUploadService
 
         // If path has extension then insert the number pattern just before the extension and return next filename
         if (Path.HasExtension(path))
-            return GetNextFilename(path.Insert(path.LastIndexOf(Path.GetExtension(path)), numberPattern));
+            return GetNextFilename(path.Insert(path.LastIndexOf(Path.GetExtension(path)), _numberPattern));
 
         // Otherwise just append the pattern to the path and return next filename
-        return GetNextFilename(path + numberPattern);
+        return GetNextFilename(path + _numberPattern);
     }
 
     private static string GetNextFilename(string pattern)

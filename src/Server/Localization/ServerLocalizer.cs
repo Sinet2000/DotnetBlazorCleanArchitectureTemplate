@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Localization;
 
-namespace Server.Localization;
+namespace PaperStop.Server.Localization;
 
 internal class ServerLocalizer<T> where T : class
 {

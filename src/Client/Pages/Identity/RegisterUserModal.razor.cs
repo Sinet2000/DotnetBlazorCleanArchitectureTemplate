@@ -19,17 +19,17 @@ namespace PaperStop.Client.Pages.Identity
 
         private async Task SubmitAsync()
         {
-            var response = await _userManager.RegisterUserAsync(_registerUserModel);
+            var response = await UserManager.RegisterUserAsync(_registerUserModel);
             if (response.Succeeded)
             {
-                _snackBar.Add(response.Messages[0], Severity.Success);
+                SnackBar.Add(response.Messages[0], Severity.Success);
                 MudDialog.Close();
             }
             else
             {
                 foreach (var message in response.Messages)
                 {
-                    _snackBar.Add(message, Severity.Error);
+                    SnackBar.Add(message, Severity.Error);
                 }
             }
         }

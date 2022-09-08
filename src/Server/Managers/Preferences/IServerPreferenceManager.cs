@@ -1,6 +1,6 @@
 ﻿using PaperStop.Shared.Managers;
 
-namespace Server.Managers.Preferences;
+namespace PaperStop.Server.Managers.Preferences;
 
 public interface IServerPreferenceManager : IPreferenceManager
 {

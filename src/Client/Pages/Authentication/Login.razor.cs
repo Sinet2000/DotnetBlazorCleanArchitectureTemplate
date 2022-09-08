@@ -14,26 +14,26 @@ public partial class Login
 
     protected override async Task OnInitializedAsync()
     {
-        var state = await _stateProvider.GetAuthenticationStateAsync();
+        var state = await StateProvider.GetAuthenticationStateAsync();
         if (state != new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity())))
         {
-            _navigationManager.NavigateTo("/");
+            NavigationManager.NavigateTo("/");
         }
     }
 
     private async Task SubmitAsync()
     {
-        var result = await _authenticationManager.Login(_tokenModel);
+        var result = await AuthenticationManager.Login(_tokenModel);
         if (result.Succeeded)
         {
-            _snackBar.Add(string.Format(_localizer["Welcome {0}"], _tokenModel.Email), Severity.Success);
-            _navigationManager.NavigateTo("/", true);
+            SnackBar.Add(string.Format(Localizer["Welcome {0}"], _tokenModel.Email), Severity.Success);
+            NavigationManager.NavigateTo("/", true);
         }
         else
         {
             foreach (var message in result.Messages)
             {
-                _snackBar.Add(message, Severity.Error);
+                SnackBar.Add(message, Severity.Error);
             }
         }
     }

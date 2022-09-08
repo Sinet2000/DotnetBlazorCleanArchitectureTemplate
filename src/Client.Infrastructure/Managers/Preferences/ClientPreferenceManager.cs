@@ -38,9 +38,9 @@ public class ClientPreferenceManager : IClientPreferenceManager
         var preference = await GetPreference() as ClientPreference;
         if (preference != null)
         {
-            preference.IsRTL = !preference.IsRTL;
+            preference.IsRtl = !preference.IsRtl;
             await SetPreference(preference);
-            return preference.IsRTL;
+            return preference.IsRtl;
         }
         return false;
     }
@@ -72,14 +72,14 @@ public class ClientPreferenceManager : IClientPreferenceManager
         return ClientAppTheme.DefaultTheme;
     }
 
-    public async Task<bool> IsRTL()
+    public async Task<bool> IsRtl()
     {
         var preference = await GetPreference() as ClientPreference;
         if (preference != null)
         {
             if (preference.IsDarkMode == true) return false;
         }
-        return preference.IsRTL;
+        return preference.IsRtl;
     }
 
     public async Task<IPreference> GetPreference()

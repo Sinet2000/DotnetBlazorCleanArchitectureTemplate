@@ -1,6 +1,6 @@
 ﻿using Hangfire.Dashboard;
 
-namespace Server.Filters;
+namespace PaperStop.Server.Filters;
 
 public class HangfireAuthorizationFilter : IDashboardAuthorizationFilter
 {

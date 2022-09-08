@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using PaperStop.Application.Interfaces.Services;
 
-namespace Server.Services;
+namespace PaperStop.Server.Services;
 
 public class CurrentUserService : ICurrentUserService
 {

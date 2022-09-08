@@ -1,4 +1,4 @@
-﻿namespace Server.Localization
+﻿namespace PaperStop.Server.Localization
 {
     internal class ServerCommonResources
     {

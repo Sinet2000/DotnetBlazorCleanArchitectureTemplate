@@ -27,7 +27,8 @@ namespace PaperStop.Client.Pages.Identity
 
         protected override async Task OnInitializedAsync()
         {
-            HubConnection = HubConnection.TryInitialize(_navigationManager);
+            var apiAddress = Configuration[$"{ClientAppConfiguration.ConfigKey}:{nameof(ClientAppConfiguration.ApiAddress)}"];
+            HubConnection = HubConnection.TryInitialize(NavigationManager, apiAddress);
             if (HubConnection.State == HubConnectionState.Disconnected)
             {
                 await HubConnection.StartAsync();
@@ -39,7 +40,7 @@ namespace PaperStop.Client.Pages.Identity
             var response = await RoleManager.SaveAsync(RoleModel);
             if (response.Succeeded)
             {
-                _snackBar.Add(response.Messages[0], Severity.Success);
+                SnackBar.Add(response.Messages[0], Severity.Success);
                 await HubConnection.SendAsync(ApplicationConstants.SignalR.SendUpdateDashboard);
                 MudDialog.Close();
             }
@@ -47,7 +48,7 @@ namespace PaperStop.Client.Pages.Identity
             {
                 foreach (var message in response.Messages)
                 {
-                    _snackBar.Add(message, Severity.Error);
+                    SnackBar.Add(message, Severity.Error);
                 }
             }
         }

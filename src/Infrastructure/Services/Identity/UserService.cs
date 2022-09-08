@@ -234,10 +234,10 @@ public class UserService : IUserService
         code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
         var route = "account/reset-password";
         var endpointUri = new Uri(string.Concat($"{origin}/", route));
-        var passwordResetURL = QueryHelpers.AddQueryString(endpointUri.ToString(), "Token", code);
+        var passwordResetUrl = QueryHelpers.AddQueryString(endpointUri.ToString(), "Token", code);
         var mailRequest = new MailRequest
         {
-            Body = string.Format(_localizer["Please reset your password by <a href='{0}>clicking here</a>."], HtmlEncoder.Default.Encode(passwordResetURL)),
+            Body = string.Format(_localizer["Please reset your password by <a href='{0}>clicking here</a>."], HtmlEncoder.Default.Encode(passwordResetUrl)),
             Subject = _localizer["Reset Password"],
             To = request.Email
         };

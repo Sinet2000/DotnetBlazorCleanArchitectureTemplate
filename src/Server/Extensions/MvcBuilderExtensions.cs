@@ -4,7 +4,7 @@ using PaperStop.Application.Configurations;
 using PaperStop.Application.Features.ExtendedAttributes.Commands.AddEdit;
 using PaperStop.Application.Validators.Features.ExtendedAttributes.Commands.AddEdit;
 
-namespace Server.Extensions;
+namespace PaperStop.Server.Extensions;
 
 internal static class MvcBuilderExtensions
 {

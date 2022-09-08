@@ -53,8 +53,8 @@ public class ChatService : IChatService
                     Id = x.Id,
                     ToUserId = x.ToUserId,
                     ToUserFullName = $"{x.ToUser.FirstName} {x.ToUser.LastName}",
-                    ToUserImageURL = x.ToUser.ProfilePictureDataUrl,
-                    FromUserImageURL = x.FromUser.ProfilePictureDataUrl
+                    ToUserImageUrl = x.ToUser.ProfilePictureDataUrl,
+                    FromUserImageUrl = x.FromUser.ProfilePictureDataUrl
                 }).ToListAsync();
             return await Result<IEnumerable<ChatHistoryResponse>>.SuccessAsync(query);
         }

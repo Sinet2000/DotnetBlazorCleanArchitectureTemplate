@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PaperStop.Infrastructure.Context;
 using Serilog;
 
-namespace Server;
+namespace PaperStop.Server;
 
 public class Program
 {

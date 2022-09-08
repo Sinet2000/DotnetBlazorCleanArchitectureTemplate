@@ -21,7 +21,7 @@ namespace PaperStop.Client.Shared.Components
 
         private async Task LoadDataAsync()
         {
-            var state = await _stateProvider.GetAuthenticationStateAsync();
+            var state = await StateProvider.GetAuthenticationStateAsync();
             var user = state.User;
 
             this.Email = ClaimsPrincipalExtensions.GetEmail(user).Replace(".com", string.Empty);
@@ -31,8 +31,8 @@ namespace PaperStop.Client.Shared.Components
             {
                 FirstLetterOfName = FirstName[0];
             }
-            var UserId = ClaimsPrincipalExtensions.GetUserId(user);
-            var imageResponse = await _accountManager.GetProfilePictureAsync(UserId);
+            var userId = ClaimsPrincipalExtensions.GetUserId(user);
+            var imageResponse = await AccountManager.GetProfilePictureAsync(userId);
             if (imageResponse.Succeeded)
             {
                 ImageDataUrl = imageResponse.Data;

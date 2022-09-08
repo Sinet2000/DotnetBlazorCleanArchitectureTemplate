@@ -12,10 +12,10 @@ namespace PaperStop.Client.Pages.Identity
 
         private async Task ChangePasswordAsync()
         {
-            var response = await _accountManager.ChangePasswordAsync(_passwordModel);
+            var response = await AccountManager.ChangePasswordAsync(_passwordModel);
             if (response.Succeeded)
             {
-                _snackBar.Add(_localizer["Password Changed!"], Severity.Success);
+                SnackBar.Add(Localizer["Password Changed!"], Severity.Success);
                 _passwordModel.Password = string.Empty;
                 _passwordModel.NewPassword = string.Empty;
                 _passwordModel.ConfirmNewPassword = string.Empty;
@@ -24,7 +24,7 @@ namespace PaperStop.Client.Pages.Identity
             {
                 foreach (var error in response.Messages)
                 {
-                    _snackBar.Add(error, Severity.Error);
+                    SnackBar.Add(error, Severity.Error);
                 }
             }
         }

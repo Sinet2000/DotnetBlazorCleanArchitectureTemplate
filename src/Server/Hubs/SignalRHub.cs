@@ -3,7 +3,7 @@ using PaperStop.Application.Interfaces.Chat;
 using PaperStop.Application.Models.Chat;
 using PaperStop.Shared.Constants.Application;
 
-namespace Server.Hubs;
+namespace PaperStop.Server.Hubs;
 
 public class SignalRHub : Hub
 {

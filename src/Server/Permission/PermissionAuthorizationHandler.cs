@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using PaperStop.Shared.Constants.Permission;
 
-namespace Server.Permission;
+namespace PaperStop.Server.Permission;
 
 internal class PermissionAuthorizationHandler : AuthorizationHandler<PermissionRequirement>
 {

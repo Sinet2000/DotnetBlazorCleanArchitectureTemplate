@@ -20,13 +20,13 @@ namespace PaperStop.Client.Pages.Communication
         [CascadingParameter] private HubConnection HubConnection { get; set; }
         [Parameter] public string CurrentMessage { get; set; }
         [Parameter] public string CurrentUserId { get; set; }
-        [Parameter] public string CurrentUserImageURL { get; set; }
+        [Parameter] public string CurrentUserImageUrl { get; set; }
 
         private List<ChatHistoryResponse> _messages = new();
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
-            await _jsRuntime.InvokeAsync<string>("ScrollToBottom", "chatContainer");
+            await JsRuntime.InvokeAsync<string>("ScrollToBottom", "chatContainer");
         }
 
         private async Task SubmitAsync()
@@ -43,7 +43,7 @@ namespace PaperStop.Client.Pages.Communication
                 var response = await ChatManager.SaveMessageAsync(chatHistory);
                 if (response.Succeeded)
                 {
-                    var state = await _stateProvider.GetAuthenticationStateAsync();
+                    var state = await StateProvider.GetAuthenticationStateAsync();
                     var user = state.User;
                     CurrentUserId = user.GetUserId();
                     chatHistory.FromUserId = CurrentUserId;
@@ -55,7 +55,7 @@ namespace PaperStop.Client.Pages.Communication
                 {
                     foreach (var message in response.Messages)
                     {
-                        _snackBar.Add(message, Severity.Error);
+                        SnackBar.Add(message, Severity.Error);
                     }
                 }
             }
@@ -71,7 +71,8 @@ namespace PaperStop.Client.Pages.Communication
 
         protected override async Task OnInitializedAsync()
         {
-            HubConnection = HubConnection.TryInitialize(_navigationManager);
+            var apiAddress = Configuration[$"{ClientAppConfiguration.ConfigKey}:{nameof(ClientAppConfiguration.ApiAddress)}"];
+            HubConnection = HubConnection.TryInitialize(NavigationManager, apiAddress);
             if (HubConnection.State == HubConnectionState.Disconnected)
             {
                 await HubConnection.StartAsync();
@@ -83,7 +84,7 @@ namespace PaperStop.Client.Pages.Communication
                 if (connectedUser is {IsOnline: false})
                 {
                     connectedUser.IsOnline = true;
-                    _snackBar.Add($"{connectedUser.UserName} {_localizer["Logged In."]}", Severity.Info);
+                    SnackBar.Add($"{connectedUser.UserName} {Localizer["Logged In."]}", Severity.Info);
                     StateHasChanged();
                 }
             });
@@ -93,7 +94,7 @@ namespace PaperStop.Client.Pages.Communication
                 if (disconnectedUser is {IsOnline: true})
                 {
                     disconnectedUser.IsOnline = false;
-                    _snackBar.Add($"{disconnectedUser.UserName} {_localizer["Logged Out."]}", Severity.Info);
+                    SnackBar.Add($"{disconnectedUser.UserName} {Localizer["Logged Out."]}", Severity.Info);
                     StateHasChanged();
                 }
             });
@@ -103,22 +104,22 @@ namespace PaperStop.Client.Pages.Communication
                  {
                      if ((CId == chatHistory.ToUserId && CurrentUserId == chatHistory.FromUserId))
                      {
-                         _messages.Add(new ChatHistoryResponse { Message = chatHistory.Message, FromUserFullName = userName, CreatedDate = chatHistory.CreatedDate, FromUserImageURL = CurrentUserImageURL });
-                         await HubConnection.SendAsync(ApplicationConstants.SignalR.SendChatNotification, string.Format(_localizer["New Message From {0}"], userName), CId, CurrentUserId);
+                         _messages.Add(new ChatHistoryResponse { Message = chatHistory.Message, FromUserFullName = userName, CreatedDate = chatHistory.CreatedDate, FromUserImageUrl = CurrentUserImageUrl });
+                         await HubConnection.SendAsync(ApplicationConstants.SignalR.SendChatNotification, string.Format(Localizer["New Message From {0}"], userName), CId, CurrentUserId);
                      }
                      else if ((CId == chatHistory.FromUserId && CurrentUserId == chatHistory.ToUserId))
                      {
-                         _messages.Add(new ChatHistoryResponse { Message = chatHistory.Message, FromUserFullName = userName, CreatedDate = chatHistory.CreatedDate, FromUserImageURL = CImageURL });
+                         _messages.Add(new ChatHistoryResponse { Message = chatHistory.Message, FromUserFullName = userName, CreatedDate = chatHistory.CreatedDate, FromUserImageUrl = CImageUrl });
                      }
-                     await _jsRuntime.InvokeAsync<string>("ScrollToBottom", "chatContainer");
+                     await JsRuntime.InvokeAsync<string>("ScrollToBottom", "chatContainer");
                      StateHasChanged();
                  }
              });
             await GetUsersAsync();
-            var state = await _stateProvider.GetAuthenticationStateAsync();
+            var state = await StateProvider.GetAuthenticationStateAsync();
             var user = state.User;
             CurrentUserId = user.GetUserId();
-            CurrentUserImageURL = await _localStorage.GetItemAsync<string>(StorageConstants.Local.UserImageURL);
+            CurrentUserImageUrl = await LocalStorage.GetItemAsync<string>(StorageConstants.Local.UserImageUrl);
             if (!string.IsNullOrEmpty(CId))
             {
                 await LoadUserChat(CId);
@@ -129,20 +130,20 @@ namespace PaperStop.Client.Pages.Communication
         [Parameter] public string CFullName { get; set; }
         [Parameter] public string CId { get; set; }
         [Parameter] public string CUserName { get; set; }
-        [Parameter] public string CImageURL { get; set; }
+        [Parameter] public string CImageUrl { get; set; }
 
         private async Task LoadUserChat(string userId)
         {
             _open = false;
-            var response = await _userManager.GetAsync(userId);
+            var response = await UserManager.GetAsync(userId);
             if (response.Succeeded)
             {
                 var contact = response.Data;
                 CId = contact.Id;
                 CFullName = $"{contact.FirstName} {contact.LastName}";
                 CUserName = contact.UserName;
-                CImageURL = contact.ProfilePictureDataUrl;
-                _navigationManager.NavigateTo($"chat/{CId}");
+                CImageUrl = contact.ProfilePictureDataUrl;
+                NavigationManager.NavigateTo($"chat/{CId}");
                 //Load messages from db here
                 _messages = new List<ChatHistoryResponse>();
                 var historyResponse = await ChatManager.GetChatHistoryAsync(CId);
@@ -154,7 +155,7 @@ namespace PaperStop.Client.Pages.Communication
                 {
                     foreach (var message in historyResponse.Messages)
                     {
-                        _snackBar.Add(message, Severity.Error);
+                        SnackBar.Add(message, Severity.Error);
                     }
                 }
             }
@@ -162,7 +163,7 @@ namespace PaperStop.Client.Pages.Communication
             {
                 foreach (var message in response.Messages)
                 {
-                    _snackBar.Add(message, Severity.Error);
+                    SnackBar.Add(message, Severity.Error);
                 }
             }
         }
@@ -179,7 +180,7 @@ namespace PaperStop.Client.Pages.Communication
             {
                 foreach (var message in response.Messages)
                 {
-                    _snackBar.Add(message, Severity.Error);
+                    SnackBar.Add(message, Severity.Error);
                 }
             }
         }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace Server.Permission;
+namespace PaperStop.Server.Permission;
 
 internal class PermissionRequirement : IAuthorizationRequirement
 {

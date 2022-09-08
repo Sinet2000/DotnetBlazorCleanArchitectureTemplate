@@ -20,18 +20,18 @@ namespace PaperStop.Client.Pages.Identity
 
         private async Task UpdateProfileAsync()
         {
-            var response = await _accountManager.UpdateProfileAsync(_profileModel);
+            var response = await AccountManager.UpdateProfileAsync(_profileModel);
             if (response.Succeeded)
             {
-                await _authenticationManager.Logout();
-                _snackBar.Add(_localizer["Your Profile has been updated. Please Login to Continue."], Severity.Success);
-                _navigationManager.NavigateTo("/");
+                await AuthenticationManager.Logout();
+                SnackBar.Add(Localizer["Your Profile has been updated. Please Login to Continue."], Severity.Success);
+                NavigationManager.NavigateTo("/");
             }
             else
             {
                 foreach (var message in response.Messages)
                 {
-                    _snackBar.Add(message, Severity.Error);
+                    SnackBar.Add(message, Severity.Error);
                 }
             }
         }
@@ -43,14 +43,14 @@ namespace PaperStop.Client.Pages.Identity
 
         private async Task LoadDataAsync()
         {
-            var state = await _stateProvider.GetAuthenticationStateAsync();
+            var state = await StateProvider.GetAuthenticationStateAsync();
             var user = state.User;
             _profileModel.Email = user.GetEmail();
             _profileModel.FirstName = user.GetFirstName();
             _profileModel.LastName = user.GetLastName();
             _profileModel.PhoneNumber = user.GetPhoneNumber();
             UserId = user.GetUserId();
-            var data = await _accountManager.GetProfilePictureAsync(UserId);
+            var data = await AccountManager.GetProfilePictureAsync(UserId);
             if (data.Succeeded)
             {
                 ImageDataUrl = data.Data;
@@ -78,18 +78,18 @@ namespace PaperStop.Client.Pages.Identity
                 var buffer = new byte[imageFile.Size];
                 await imageFile.OpenReadStream().ReadAsync(buffer);
                 var request = new UpdateProfilePictureRequest { Data = buffer, FileName = fileName, Extension = extension, UploadType = UploadType.ProfilePicture };
-                var result = await _accountManager.UpdateProfilePictureAsync(request, UserId);
+                var result = await AccountManager.UpdateProfilePictureAsync(request, UserId);
                 if (result.Succeeded)
                 {
-                    await _localStorage.SetItemAsync(StorageConstants.Local.UserImageURL, result.Data);
-                    _snackBar.Add(_localizer["Profile picture added."], Severity.Success);
-                    _navigationManager.NavigateTo("/account", true);
+                    await LocalStorage.SetItemAsync(StorageConstants.Local.UserImageUrl, result.Data);
+                    SnackBar.Add(Localizer["Profile picture added."], Severity.Success);
+                    NavigationManager.NavigateTo("/account", true);
                 }
                 else
                 {
                     foreach (var error in result.Messages)
                     {
-                        _snackBar.Add(error, Severity.Error);
+                        SnackBar.Add(error, Severity.Error);
                     }
                 }
             }
@@ -99,27 +99,27 @@ namespace PaperStop.Client.Pages.Identity
         {
             var parameters = new DialogParameters
             {
-                {nameof(Shared.Dialogs.DeleteConfirmation.ContentText), $"{string.Format(_localizer["Do you want to delete the profile picture of {0}"], _profileModel.Email)}?"}
+                {nameof(Shared.Dialogs.DeleteConfirmation.ContentText), $"{string.Format(Localizer["Do you want to delete the profile picture of {0}"], _profileModel.Email)}?"}
             };
             var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true, DisableBackdropClick = true };
-            var dialog = _dialogService.Show<Shared.Dialogs.DeleteConfirmation>(_localizer["Delete"], parameters, options);
+            var dialog = DialogService.Show<Shared.Dialogs.DeleteConfirmation>(Localizer["Delete"], parameters, options);
             var result = await dialog.Result;
             if (!result.Cancelled)
             {
                 var request = new UpdateProfilePictureRequest { Data = null, FileName = string.Empty, UploadType = UploadType.ProfilePicture };
-                var data = await _accountManager.UpdateProfilePictureAsync(request, UserId);
+                var data = await AccountManager.UpdateProfilePictureAsync(request, UserId);
                 if (data.Succeeded)
                 {
-                    await _localStorage.RemoveItemAsync(StorageConstants.Local.UserImageURL);
+                    await LocalStorage.RemoveItemAsync(StorageConstants.Local.UserImageUrl);
                     ImageDataUrl = string.Empty;
-                    _snackBar.Add(_localizer["Profile picture deleted."], Severity.Success);
-                    _navigationManager.NavigateTo("/account", true);
+                    SnackBar.Add(Localizer["Profile picture deleted."], Severity.Success);
+                    NavigationManager.NavigateTo("/account", true);
                 }
                 else
                 {
                     foreach (var error in data.Messages)
                     {
-                        _snackBar.Add(error, Severity.Error);
+                        SnackBar.Add(error, Severity.Error);
                     }
                 }
             }

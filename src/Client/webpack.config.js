@@ -1,5 +1,5 @@
 const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { cleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Port for webpack server
@@ -96,7 +96,7 @@ module.exports = (env, argv) => {
             ]
         },
         plugins: [
-            new CleanWebpackPlugin(),
+            new cleanWebpackPlugin(),
             new MiniCssExtractPlugin({
                 filename: "[name].css"
             })

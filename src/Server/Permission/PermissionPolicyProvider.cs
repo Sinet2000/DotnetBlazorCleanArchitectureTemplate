@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using PaperStop.Shared.Constants.Permission;
 
-namespace Server.Permission;
+namespace PaperStop.Server.Permission;
 
 internal class PermissionPolicyProvider : IAuthorizationPolicyProvider
 {

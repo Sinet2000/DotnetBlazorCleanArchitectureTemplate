@@ -68,23 +68,23 @@ namespace PaperStop.Client.Shared.Components
 
         protected override async Task OnInitializedAsync()
         {
-            _currentUser = await _authenticationManager.CurrentUser();
-            _canViewExtendedAttributes = (await _authorizationService.AuthorizeAsync(_currentUser, ExtendedAttributesViewPolicyName)).Succeeded;
+            _currentUser = await AuthenticationManager.CurrentUser();
+            _canViewExtendedAttributes = (await AuthorizationService.AuthorizeAsync(_currentUser, ExtendedAttributesViewPolicyName)).Succeeded;
             if (!_canViewExtendedAttributes)
             {
-                _snackBar.Add(_localizer["Not Allowed."], Severity.Error);
-                _navigationManager.NavigateTo("/");
+                SnackBar.Add(Localizer["Not Allowed."], Severity.Error);
+                NavigationManager.NavigateTo("/");
             }
-            _canEditExtendedAttributes = (await _authorizationService.AuthorizeAsync(_currentUser, ExtendedAttributesEditPolicyName)).Succeeded;
-            _canCreateExtendedAttributes = (await _authorizationService.AuthorizeAsync(_currentUser, ExtendedAttributesCreatePolicyName)).Succeeded;
-            _canDeleteExtendedAttributes = (await _authorizationService.AuthorizeAsync(_currentUser, ExtendedAttributesDeletePolicyName)).Succeeded;
-            _canExportExtendedAttributes = (await _authorizationService.AuthorizeAsync(_currentUser, ExtendedAttributesExportPolicyName)).Succeeded;
-            _canSearchExtendedAttributes = (await _authorizationService.AuthorizeAsync(_currentUser, ExtendedAttributesSearchPolicyName)).Succeeded;
+            _canEditExtendedAttributes = (await AuthorizationService.AuthorizeAsync(_currentUser, ExtendedAttributesEditPolicyName)).Succeeded;
+            _canCreateExtendedAttributes = (await AuthorizationService.AuthorizeAsync(_currentUser, ExtendedAttributesCreatePolicyName)).Succeeded;
+            _canDeleteExtendedAttributes = (await AuthorizationService.AuthorizeAsync(_currentUser, ExtendedAttributesDeletePolicyName)).Succeeded;
+            _canExportExtendedAttributes = (await AuthorizationService.AuthorizeAsync(_currentUser, ExtendedAttributesExportPolicyName)).Succeeded;
+            _canSearchExtendedAttributes = (await AuthorizationService.AuthorizeAsync(_currentUser, ExtendedAttributesSearchPolicyName)).Succeeded;
 
             await GetExtendedAttributesAsync();
             _loaded = true;
 
-            var state = await _stateProvider.GetAuthenticationStateAsync();
+            var state = await StateProvider.GetAuthenticationStateAsync();
             var user = state.User;
             if (user == null) return;
             if (user.Identity?.IsAuthenticated == true)
@@ -92,7 +92,8 @@ namespace PaperStop.Client.Shared.Components
                 CurrentUserId = user.GetUserId();
             }
 
-            HubConnection = HubConnection.TryInitialize(_navigationManager);
+            var apiAddress = Configuration[$"{ClientAppConfiguration.ConfigKey}:{nameof(ClientAppConfiguration.ApiAddress)}"];
+            HubConnection = HubConnection.TryInitialize(NavigationManager, apiAddress);
             if (HubConnection.State == HubConnectionState.Disconnected)
             {
                 await HubConnection.StartAsync();
@@ -106,7 +107,7 @@ namespace PaperStop.Client.Shared.Components
             {
                 GroupedExtendedAttributes.Clear();
                 _model = response.Data;
-                GroupedExtendedAttributes.Add(_localizer["All Groups"], _model);
+                GroupedExtendedAttributes.Add(Localizer["All Groups"], _model);
                 foreach (var extendedAttribute in _model)
                 {
                     if (!string.IsNullOrWhiteSpace(extendedAttribute.Group))
@@ -124,16 +125,16 @@ namespace PaperStop.Client.Shared.Components
 
                 if (_model != null)
                 {
-                    Description = string.Format(_localizer["Manage {0} {1}'s Extended Attributes"], EntityId, EntityName);
+                    Description = string.Format(Localizer["Manage {0} {1}'s Extended Attributes"], EntityId, EntityName);
                 }
             }
             else
             {
                 foreach (var message in response.Messages)
                 {
-                    _snackBar.Add(message, Severity.Error);
+                    SnackBar.Add(message, Severity.Error);
                 }
-                _navigationManager.NavigateTo("/");
+                NavigationManager.NavigateTo("/");
             }
         }
 
@@ -150,21 +151,21 @@ namespace PaperStop.Client.Shared.Components
             var response = await ExtendedAttributeManager.ExportToExcelAsync(request);
             if (response.Succeeded)
             {
-                await _jsRuntime.InvokeVoidAsync("Download", new
+                await JsRuntime.InvokeVoidAsync("Download", new
                 {
                     ByteArray = response.Data,
                     FileName = $"{typeof(TExtendedAttribute).Name.ToLower()}_{DateTime.Now:ddMMyyyyHHmmss}.xlsx",
                     MimeType = ApplicationConstants.MimeTypes.OpenXml
                 });
-                _snackBar.Add(string.IsNullOrWhiteSpace(request.SearchString) && !request.IncludeEntity && !request.OnlyCurrentGroup
-                    ? _localizer["Extended Attributes exported"]
-                    : _localizer["Filtered Extended Attributes exported"], Severity.Success);
+                SnackBar.Add(string.IsNullOrWhiteSpace(request.SearchString) && !request.IncludeEntity && !request.OnlyCurrentGroup
+                    ? Localizer["Extended Attributes exported"]
+                    : Localizer["Filtered Extended Attributes exported"], Severity.Success);
             }
             else
             {
                 foreach (var message in response.Messages)
                 {
-                    _snackBar.Add(message, Severity.Error);
+                    SnackBar.Add(message, Severity.Error);
                 }
             }
         }
@@ -203,7 +204,7 @@ namespace PaperStop.Client.Shared.Components
                 });
             }
             var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Medium, FullWidth = true, DisableBackdropClick = true };
-            var dialog = _dialogService.Show<AddEditExtendedAttributeModal<TId, TEntityId, TEntity, TExtendedAttribute>>(id.Equals(default) ? _localizer["Create"] : _localizer["Edit"], parameters, options);
+            var dialog = DialogService.Show<AddEditExtendedAttributeModal<TId, TEntityId, TEntity, TExtendedAttribute>>(id.Equals(default) ? Localizer["Create"] : Localizer["Edit"], parameters, options);
             var result = await dialog.Result;
             if (!result.Cancelled)
             {
@@ -213,13 +214,13 @@ namespace PaperStop.Client.Shared.Components
 
         private async Task Delete(TId id)
         {
-            string deleteContent = _localizer["Delete Extended Attribute?"];
+            string deleteContent = Localizer["Delete Extended Attribute?"];
             var parameters = new DialogParameters
             {
                 {nameof(Client.Shared.Dialogs.DeleteConfirmation.ContentText), string.Format(deleteContent, id)}
             };
             var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true, DisableBackdropClick = true };
-            var dialog = _dialogService.Show<Client.Shared.Dialogs.DeleteConfirmation>(_localizer["Delete"], parameters, options);
+            var dialog = DialogService.Show<Client.Shared.Dialogs.DeleteConfirmation>(Localizer["Delete"], parameters, options);
             var result = await dialog.Result;
             if (!result.Cancelled)
             {
@@ -227,14 +228,14 @@ namespace PaperStop.Client.Shared.Components
                 if (response.Succeeded)
                 {
                      await Reset();
-                    _snackBar.Add(response.Messages[0], Severity.Success);
+                    SnackBar.Add(response.Messages[0], Severity.Success);
                 }
                 else
                 {
                     await Reset();
                     foreach (var message in response.Messages)
                     {
-                        _snackBar.Add(message, Severity.Error);
+                        SnackBar.Add(message, Severity.Error);
                     }
                 }
             }
@@ -247,10 +248,10 @@ namespace PaperStop.Client.Shared.Components
             await GetExtendedAttributesAsync();
         }
 
-        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> SortById = response => response.Id;
-        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> SortByType = response => response.Type;
-        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> SortByKey = response => response.Key;
-        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> SortByValue = response => response.Type switch
+        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> _sortById = response => response.Id;
+        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> _sortByType = response => response.Type;
+        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> _sortByKey = response => response.Key;
+        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> _sortByValue = response => response.Type switch
         {
             EntityExtendedAttributeType.Decimal => response.Decimal,
             EntityExtendedAttributeType.Text => response.Text,
@@ -258,10 +259,10 @@ namespace PaperStop.Client.Shared.Components
             EntityExtendedAttributeType.Json => response.Json,
             _ => response.Text
         };
-        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> SortByExternalId = response => response.ExternalId;
-        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> SortByGroup = response => response.Group;
-        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> SortByDescription = response => response.Description;
-        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> SortByIsActive = response => response.IsActive;
+        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> _sortByExternalId = response => response.ExternalId;
+        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> _sortByGroup = response => response.Group;
+        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> _sortByDescription = response => response.Description;
+        private Func<GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId>, object> _sortByIsActive = response => response.IsActive;
 
         private bool Search(GetAllExtendedAttributesByEntityIdResponse<TId, TEntityId> extendedAttributes)
         {

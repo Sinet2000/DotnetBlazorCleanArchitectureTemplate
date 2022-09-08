@@ -4,7 +4,7 @@ namespace PaperStop.Client.Infrastructure.Settings;
 
 public class ClientAppTheme
     {
-        private static Typography DefaultTypography = new Typography()
+        private static Typography _defaultTypography = new Typography()
         {
             Default = new Default()
             {
@@ -104,7 +104,7 @@ public class ClientAppTheme
             }
         };
 
-        private static LayoutProperties DefaultLayoutProperties = new LayoutProperties()
+        private static LayoutProperties _defaultLayoutProperties = new LayoutProperties()
         {
             DefaultBorderRadius = "3px"
         };
@@ -120,8 +120,8 @@ public class ClientAppTheme
                 DrawerText = "rgba(0,0,0, 0.7)",
                 Success = "#007E33"
             },
-            Typography = DefaultTypography,
-            LayoutProperties = DefaultLayoutProperties
+            Typography = _defaultTypography,
+            LayoutProperties = _defaultLayoutProperties
         };
 
         public static MudTheme DarkTheme = new MudTheme()
@@ -145,7 +145,7 @@ public class ClientAppTheme
                 ActionDisabledBackground = "rgba(255,255,255, 0.12)",
                 DrawerIcon = "rgba(255,255,255, 0.50)"
             },
-            Typography = DefaultTypography,
-            LayoutProperties = DefaultLayoutProperties
+            Typography = _defaultTypography,
+            LayoutProperties = _defaultLayoutProperties
         };
     }

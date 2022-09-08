@@ -1,6 +1,17 @@
-﻿namespace Server.Controllers
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+namespace PaperStop.Server.Controllers;
+
+/// <summary>
+/// Abstract BaseApi Controller Class
+/// </summary>
+[ApiController]
+[Route("api/v{version:apiVersion}/[controller]")]
+public abstract class BaseApiController<T> : ControllerBase
 {
-    public class BaseApiController
-    {
-    }
+    private IMediator _mediatorInstance;
+    private ILogger<T> _loggerInstance;
+    protected IMediator Mediator => _mediatorInstance ??= HttpContext.RequestServices.GetService<IMediator>();
+    protected ILogger<T> Logger => _loggerInstance ??= HttpContext.RequestServices.GetService<ILogger<T>>();
 }

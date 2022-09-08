@@ -2,19 +2,19 @@
 @using PaperStop.Shared.Constants.Application
 
 @namespace PaperStop.Client.Shared.Dialogs
-@inject Microsoft.Extensions.Localization.IStringLocalizer<Logout> localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<Logout> Localizer
 <MudDialog>
     <TitleContent>
         <MudText Typo="Typo.h6">
             <MudIcon Icon="@Icons.Material.Filled.Logout" Class="mr-3 mb-n1" />
-            @localizer["Logout Confirmation"]
+            @Localizer["Logout Confirmation"]
         </MudText>
     </TitleContent>
     <DialogContent>
         <MudText>@ContentText</MudText>
     </DialogContent>
     <DialogActions>
-        <MudButton OnClick="Cancel">@localizer["Cancel"]</MudButton>
+        <MudButton OnClick="Cancel">@Localizer["Cancel"]</MudButton>
         <MudButton Color="@Color" Variant="Variant.Filled" OnClick="Submit">@ButtonText</MudButton>
     </DialogActions>
 </MudDialog>
@@ -34,8 +34,8 @@
     async Task Submit()
     {
         await HubConnection.SendAsync(ApplicationConstants.SignalR.OnDisconnect, CurrentUserId);
-        await _authenticationManager.Logout();
-        _navigationManager.NavigateTo("/login");
+        await AuthenticationManager.Logout();
+        NavigationManager.NavigateTo("/login");
         MudDialog.Close(DialogResult.Ok(true));
     }
     void Cancel() => MudDialog.Cancel();

@@ -18,12 +18,12 @@
 
 @*Shared Libraries*@
 
-@using Client
-@using Client.Shared
-@using Client.Shared.Dialogs
-@using Client.Shared.Components
+@using PaperStop.Client
+@using PaperStop.Client.Shared
+@using PaperStop.Client.Shared.Dialogs
+@using PaperStop.Client.Shared.Components
 
-@using Client.Pages.Authentication
+@using PaperStop.Client.Pages.Authentication
 
 @using Client.Extensions
 @using PaperStop.Client.Infrastructure.Authentication
@@ -34,16 +34,17 @@
 @using PaperStop.Client.Infrastructure.Managers.Preferences
 
 @attribute [Authorize]
-@inject IAuthenticationManager _authenticationManager
-@inject IAccountManager _accountManager
-@inject NavigationManager _navigationManager
-@inject ClientAppStateProvider _stateProvider
-@inject IAuthorizationService _authorizationService
-@inject ISnackbar _snackBar
-@inject IDialogService _dialogService
-@inject HttpClient _httpClient
-@inject IHttpInterceptorManager _interceptor
-@inject ClientPreferenceManager _clientPreferenceManager
-@inject IUserManager _userManager
-@inject ILocalStorageService _localStorage;
-@inject IJSRuntime _jsRuntime;
+@inject IAuthenticationManager AuthenticationManager
+@inject IAccountManager AccountManager
+@inject NavigationManager NavigationManager
+@inject IConfiguration Configuration
+@inject ClientAppStateProvider StateProvider
+@inject IAuthorizationService AuthorizationService
+@inject ISnackbar SnackBar
+@inject IDialogService DialogService
+@inject HttpClient HttpClient
+@inject IHttpInterceptorManager Interceptor
+@inject ClientPreferenceManager ClientPreferenceManager
+@inject IUserManager UserManager
+@inject ILocalStorageService LocalStorage;
+@inject IJSRuntime JsRuntime;

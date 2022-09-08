@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Components
 @layout MainLayout
 @attribute [AllowAnonymous]
-@inject Microsoft.Extensions.Localization.IStringLocalizer<Forgot> _localizer
+@inject Microsoft.Extensions.Localization.IStringLocalizer<Forgot> Localizer
 
 <EditForm Model="@_emailModel" OnValidSubmit="SubmitAsync">
     <FluentValidationValidator @ref="_fluentValidationValidator" />
@@ -14,19 +14,19 @@
         </MudItem>
         <MudItem xs="12">
             <div class="d-flex justify-center">
-                <MudText Typo="Typo.h4">@_localizer["Forgot password?"]</MudText>
+                <MudText Typo="Typo.h4">@Localizer["Forgot password?"]</MudText>
             </div>
         </MudItem>
         <MudItem xs="12">
             <div class="d-flex justify-center">
-                <MudText Typo="Typo.subtitle2" Class="mb-n4">@_localizer["Enter email for password reset"]</MudText>
+                <MudText Typo="Typo.subtitle2" Class="mb-n4">@Localizer["Enter email for password reset"]</MudText>
             </div>
         </MudItem>
         <MudItem xs="12">
-            <MudTextField Label="@_localizer["E-mail"]" @bind-Value="_emailModel.Email" For="@(() => _emailModel.Email)" Variant="Variant.Outlined"></MudTextField>
+            <MudTextField Label="@Localizer["E-mail"]" @bind-Value="_emailModel.Email" For="@(() => _emailModel.Email)" Variant="Variant.Outlined"></MudTextField>
         </MudItem>
         <MudItem xs="12" Class="d-flex justify-center">
-            <MudButton Variant="Variant.Filled" Disabled="@(!Validated)" Color="Color.Primary" Size="Size.Large" ButtonType="ButtonType.Submit" FullWidth="true">@_localizer["Reset Password"]</MudButton>
+            <MudButton Variant="Variant.Filled" Disabled="@(!Validated)" Color="Color.Primary" Size="Size.Large" ButtonType="ButtonType.Submit" FullWidth="true">@Localizer["Reset Password"]</MudButton>
         </MudItem>
     </MudGrid>
 </EditForm>

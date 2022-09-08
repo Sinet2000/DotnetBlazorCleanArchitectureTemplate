@@ -12,18 +12,18 @@ public partial class Register
 
     private async Task SubmitAsync()
     {
-        var response = await _userManager.RegisterUserAsync(_registerUserModel);
+        var response = await UserManager.RegisterUserAsync(_registerUserModel);
         if (response.Succeeded)
         {
-            _snackBar.Add(response.Messages[0], Severity.Success);
-            _navigationManager.NavigateTo("/login");
+            SnackBar.Add(response.Messages[0], Severity.Success);
+            NavigationManager.NavigateTo("/login");
             _registerUserModel = new RegisterRequest();
         }
         else
         {
             foreach (var message in response.Messages)
             {
-                _snackBar.Add(message, Severity.Error);
+                SnackBar.Add(message, Severity.Error);
             }
         }
     }
